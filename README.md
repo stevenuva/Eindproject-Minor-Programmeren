@@ -20,18 +20,18 @@ The visualizations will compare food production and population growth with a lin
 Datasets from the World Bank (https://data.worldbank.org/indicator) will be used. All the datasets (csv-format) are user-friendly, and will thus need none to minimum editing before implantation.
 
 #### Datasets for the map/globe:
-- Population density (people per sq. km of land area)
-- Prevalence of undernourishment (% of population)
+- [Population density (people per sq. km of land area)](https://data.worldbank.org/indicator/EN.POP.DNST?view=chart)
+- [Prevalence of undernourishment (% of population)](https://data.worldbank.org/indicator/SN.ITK.DEFC.ZS?view=chart)
 
 #### Datasets for the pie chart
-- Agricultural land (% of land area)
-- Forest area (% of land area)
+- [Agricultural land (% of land area)](https://data.worldbank.org/indicator/AG.LND.AGRI.ZS?view=chart)
+- [Forest area (% of land area)](https://data.worldbank.org/indicator/AG.LND.FRST.ZS?view=chart)
 
 #### Datasets for the line graph
-- Population, total (note: index will be calculated and used for the line graph)
-- Food production index (2004 – 2006 = 100)
-- Crop production index (2004 – 2006 = 100)
-- Livestock production index (2004 – 2006 = 100)
+- [Population, total](https://data.worldbank.org/indicator/SP.POP.TOTL?view=chart) (note: index will be calculated and used for the line graph)
+- [Food production index (2004 – 2006 = 100)](https://data.worldbank.org/indicator/AG.PRD.FOOD.XD?view=chart)
+- [Crop production index (2004 – 2006 = 100)](https://data.worldbank.org/indicator/AG.PRD.CROP.XD?view=chart)
+- [Livestock production index (2004 – 2006 = 100)](https://data.worldbank.org/indicator/AG.PRD.LVSK.XD?view=chart)
 
 ### External components (for now)
 - Ajax
