@@ -3,7 +3,7 @@
 ## **Agriculture and Population growth: How sustainable is the current population growth**
 
 ### Problem Statement
-The finished product will illustrate whether population growth is outpacing agricultural production in (some parts of) the world. In 1799 demographer Thomas Malthus predicted that in the future there will come a day when there is not enough food produced to feed everybody, and that too much land is being used for agriculture. People who are interested in sustainability will see whether there are any indications that indicate that Malthus might be right and that overpopulation is or will be a real problem.
+The finished product will illustrate whether population growth is outpacing agricultural production in (some parts of) the world. In 1799 demographer Thomas Malthus predicted that in the future there will come a day when there will not be enough food produced to feed everybody, and that too much land is being used for agriculture. People who are interested in sustainability will see whether there are any indications that indicate that Malthus might be right and that overpopulation is or will be a real problem.
 
 ### Solution
 The visualizations will compare food production and population growth with a line graph, show how densely populated a country is, and how much land of a country is already being used for agriculture.
@@ -34,12 +34,17 @@ Datasets from the World Bank (https://data.worldbank.org/indicator) will be used
 - Livestock production index (2004 – 2006 = 100)
 
 ### External components (for now)
+- Ajax
+- Bootstrap
+- jQuery
+- D3 version 4
 - D3 tip
 - D3 topojson (https://github.com/topojson/topojson)
-- Bootstrap
+- D3 Datamaps
 
 ### Hardest parts
 Working with a d3 globe will be challenging, because it is the central element of the linked views and because I have yet to work with something like a moveable d3 element. If it ends up being too difficult, I will instead visualize a static worldmap.
 
 ### Similar visualizations
-
+There are line graphs that already illustrate the growth or decline of food production and population size, but the graphs cannot be updated. With the linked views my graph can be updated, showing different lines for different countries.
+Globes are also found on the internet, but they either do not have click-on function that update other visualizations, or they did not draw clear borders.
