@@ -22,7 +22,8 @@ Datasets from the World Bank (https://data.worldbank.org/indicator) will be used
 ### Diagram / Description components
 ![diagram components](doc/diagram.jpg)
 
-### main.html
+#### main.html
+Needs: AJAX, Bootstrap
 - Dropdown-menu for the globe.
 Needed: Bootstrap. Allows the user to choose which variable will be depicted on the globe. Click-on function calls a function that updates the Globe.
 - Dropdown-menu Line Graph
@@ -51,7 +52,7 @@ Needs: d3 tip
 
 #### CSS
 - Every visualization has its own css file
-- Main.css also exist for the main.html and overlapping css
+- Main.css also exist for the main.html and overlapping css (e.g. tooltip)
 
 
 ### D3 plugins and other libraries (for now)
