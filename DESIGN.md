@@ -22,6 +22,9 @@ Datasets from the World Bank (https://data.worldbank.org/indicator) will be used
 ### Diagram / Description components
 ![diagram components](doc/diagram.jpg)
 
+#### convert_csv_to_json.py
+- converts the csv's downloaded from data.worldbank.org to json files.
+
 #### main.html
 Needs: AJAX, Bootstrap
 - Dropdown-menu for the globe.
@@ -31,7 +34,7 @@ Allows the user to choose which variable will be drawn on the line graph. Click-
 - Time(Year) Slider with play/pause button
 Slider which allows the user to choose from which year the data will be shown. Slider movement calls a function, which updates the year from which the data is depicted on the globe. No extra libraries needed.
 
-### main.js
+#### main.js
 - on load function: load json data with d3.queue
 - checkResponse(response, error), function to check, clean and store the requested data in multiple arrays (global variables).
 - call function to create a globe, line graph and a pie chart
