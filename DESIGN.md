@@ -25,26 +25,31 @@ Datasets from the World Bank (https://data.worldbank.org/indicator) will be used
 #### main.html
 Needs: AJAX, Bootstrap
 - Dropdown-menu for the globe.
-Needed: Bootstrap. Allows the user to choose which variable will be depicted on the globe. Click-on function calls a function that updates the Globe.
+Allows the user to choose which variable will be depicted on the globe. Click-on function calls a function that updates the Globe.
 - Dropdown-menu Line Graph
-Needed: Bootstrap. Allows the user to choose which variable will be drawn on the line graph. Click-on function calls a function that updates the Line Graph.
+Allows the user to choose which variable will be drawn on the line graph. Click-on function calls a function that updates the Line Graph.
 - Time(Year) Slider with play/pause button
 Slider which allows the user to choose from which year the data will be shown. Slider movement calls a function, which updates the year from which the data is depicted on the globe. No extra libraries needed.
 
-#### Globe (main.js)
+### main.js
+- on load function: load json data with d3.queue
+- checkResponse(response, error), function to check, clean and store the requested data in multiple arrays (global variables).
+- call function to create a globe, line graph and a pie chart
+
+#### Globe (globe.js)
 Needs: d3 tip, d3 datamaps
 - function createGlobe(2015, globe_array[0]). Initializes a globe, with data from 2015 with a legend.
 - function updateGlobe(year, variable). Updates the globes year or variable if user clicks on the dropdown menu or moves the time slider. Legend also edited by function.
 - has a tooltip, which allows user to see data from a country when the user hoovers over it
 - calls function updateLineGraph(country) and  updatePieChart(country, year) when the user clicks on a country on the globe.
 
-#### Line Graph (main.js)
+#### Line Graph (linegraph.js)
 Needs: d3 tip
 - function createLineGraph(world). Initialize a line graph with data from the world as a whole.
 - linegraph shows info for a specific country, when the function updateLineGraph(country) is called
 - has a tooltip, which allows user to see detailed info from a data point when the user hoovers over a line in the line graph.
 
-#### Pie Chart (main.js)
+#### Pie Chart (piechart.js)
 Needs: d3 tip
 - function createPieChart(world, 2015). Initialize a line graph with data (from 2015) from the world as a whole.
 - pie chart shows info for a specific country, when the function updatePieChart(country, year) is called. Legend is updated as well.
@@ -53,7 +58,6 @@ Needs: d3 tip
 #### CSS
 - Every visualization has its own css file
 - Main.css also exist for the main.html and overlapping css (e.g. tooltip)
-
 
 ### D3 plugins and other libraries (for now)
 - Ajax
