@@ -25,5 +25,5 @@ def convert_to_json(filename):
 
 
 # convert the csv files needed to json
-convert_to_json("eu_health_spending")
-convert_to_json("eu_life_expect")
+convert_to_json("world_bank_data")
+
