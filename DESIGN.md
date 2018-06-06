@@ -45,18 +45,21 @@ Needs: d3 tip, d3 datamaps
 - function updateGlobe(year, variable). Updates the globes year or variable if user clicks on the dropdown menu or moves the time slider. Legend also edited by function.
 - has a tooltip, which allows user to see data from a country when the user hoovers over it
 - calls function updateLineGraph(country) and  updatePieChart(country, year) when the user clicks on a country on the globe.
+- function addLegend(), adds a legend
 
 #### Line Graph (linegraph.js)
 Needs: d3 tip
 - function createLineGraph(world). Initialize a line graph with data from the world as a whole.
 - linegraph shows info for a specific country, when the function updateLineGraph(country) is called
 - has a tooltip, which allows user to see detailed info from a data point when the user hoovers over a line in the line graph.
+- function addLegend(), adds a legend
 
 #### Pie Chart (piechart.js)
 Needs: d3 tip
 - function createPieChart(world, 2015). Initialize a line graph with data (from 2015) from the world as a whole.
 - pie chart shows info for a specific country, when the function updatePieChart(country, year) is called. Legend is updated as well.
 - has a tooltip, which allows user to see detailed info from a part of the pie chart when the user hoovers over it.
+- function addLegend(), adds a legend
 
 #### CSS
 - Every visualization has its own css file
