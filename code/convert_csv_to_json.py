@@ -1,4 +1,4 @@
-# Dataprocessing Week 5 (linked views)
+# Project
 # Name: Steven Kuhnen (10305882)
 #
 # Converts a csv file to a json file
