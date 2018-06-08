@@ -3,6 +3,7 @@ var jsonData = []
 // call function load data when page is loaded
 window.onload = function() {
   loadData();
+  createGlobe();
 };
 
 /**
@@ -33,9 +34,10 @@ function checkResponse(error, response) {
 }
 
 function restructData(data){
+    console.log(data[0][0]["Series"])
     var dataGlobe = []
     for (var i = 0; i < data[0].length; i++) {
-        if(data[0][i]["Series Code"] == "EN.POP.DNST"){
+        if(data[0][i]["Series"] == "EN.POP.DNST"){
             dataGlobe.push(data[0][i])
         }
     }

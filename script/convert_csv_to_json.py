@@ -26,4 +26,3 @@ def convert_to_json(filename):
 
 # convert the csv files needed to json
 convert_to_json("world_bank_data")
-
