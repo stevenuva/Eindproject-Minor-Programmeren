@@ -59,7 +59,7 @@ function restructData(data){
     //     }
     // })
 
-    createGlobe(popDensity);
+    createGlobe(popDensity, foodIndex);
     createPieChart(agricultureLand, forestLand);
     // createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex);
 };

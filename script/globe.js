@@ -104,8 +104,9 @@ function createGlobe(popDensity, year = 2014) {
           toolTip.style("opacity", 0)
           .style("display", "none");
         })
-        .on("mousemove", function(d) {
-          console.log(countryId[d.id])
+        .on("click", function(d) {
+          // console.log(countryId[d.id])
+          toolTip.text("ok")
           toolTip.style("left", (d3.event.pageX + 7) + "px")
           .style("top", (d3.event.pageY - 15) + "px");
         });

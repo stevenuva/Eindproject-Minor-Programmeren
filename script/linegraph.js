@@ -1,4 +1,4 @@
-function createLineGraph(country){
+function createLineGraph(popDensity, foodIndex, country = "World"){
 
     var w = 600,
     h = 500;

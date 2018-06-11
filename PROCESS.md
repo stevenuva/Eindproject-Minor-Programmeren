@@ -23,7 +23,14 @@
 - addded data world as a whole
 - created function createGlobe();
 
+# day 6
+- data needs to be seperated again per dataset (using eval function)
+- used bootstrap to place svg
+- added a pie chart (including working data, color, label)
+- added on click funtion globe
+- added svg for line graph
+
 ## to do next days/weeks:
-- Data needs to be seperated again per dataset
-- Need to create 9 arrays and to loop through the data to store every dataset in it's own array
-- fix placement drop down globe
+- fix placement with bootstrap
+- add line graph, including drop down menu
+- add time line
