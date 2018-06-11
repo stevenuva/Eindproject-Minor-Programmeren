@@ -45,7 +45,7 @@ function createGlobe(popDensity, year = 2014) {
         countryData.forEach(function(d) {
         test.push(d.name)
         })
-        console.log(test)
+        // console.log(test)
 
 
         var countryId = {},

@@ -45,20 +45,23 @@ function restructData(data){
 
     var popDensity = []
     data[0].forEach(function(d) {
-        if (d["Series"] === "popDensity") {
-            popDensity.push(d)
-        }
+        eval(d["Series"]).push(d)
+        // if (d["Series"] === "popDensity") {
+        //     popDensity.push(d)
+        // }
     })
     // console.log(popDensity)
 
-    popDensity.forEach(function(d) {
-        if (d["Country"] === "Afghanistan") {
-            console.log(d["2014"])
-        }
-    })
+
+    // popDensity.forEach(function(d) {
+    //     if (d["Country"] === "Afghanistan") {
+    //         console.log(d["2014"])
+    //     }
+    // })
 
     createGlobe(popDensity);
-
+    createPieChart(agricultureLand, forestLand);
+    // createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex);
 };
     // console.log(foodIndex)
 

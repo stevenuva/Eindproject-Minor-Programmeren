@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- link to external sheets for style -->
     <link rel="shortcut icon" href="/image/favicon.png">
+    <link rel="stylesheet" type="text/css" href="piechart.css">
     <link rel="stylesheet" type="text/css" href="globe.css">
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet bootstrap" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,6 +14,9 @@
     <script src="https://d3js.org/topojson.v1.min.js"></script>
     <script src="main.js"></script>
     <script src="globe.js"></script>
+    <script src="linegraph.js"></script>
+    <script src="piechart.js"></script>
+
     <!--
         source bootstrap: https://getbootstrap.com/docs/3.3/getting-started/
         jQuery library
@@ -62,13 +66,13 @@
         </div>
         <div class="row">
             <div class="col-md-2">
+                <h2>Pie Chart (COUNTRY) (YEAR)</h2>
                 <div id="pieChart">
-                    <h2>Pie Chart (COUNTRY) (YEAR)</h2>
                 </div>
             </div>
             <div class="col-md-2">
+                <h2>Line Graph (COUNTRY)</h2>
                 <div id="lineGraph">
-                    <h2>Line Graph (COUNTRY)</h2>
                 </div>
             </div>
         </div>
