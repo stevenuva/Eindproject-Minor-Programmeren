@@ -1,9 +1,17 @@
 var jsonData = []
 
+
+var popDenisty = []
+var agricultureLand = []
+var forestLand = []
+var popTotal = []
+var foodIndex = []
+var cropIndex = []
+var livestockIndex = []
+
 // call function load data when page is loaded
 window.onload = function() {
   loadData();
-  createGlobe();
 };
 
 /**
@@ -34,12 +42,32 @@ function checkResponse(error, response) {
 }
 
 function restructData(data){
-    console.log(data[0][0]["Series"])
-    var dataGlobe = []
-    for (var i = 0; i < data[0].length; i++) {
-        if(data[0][i]["Series"] == "EN.POP.DNST"){
-            dataGlobe.push(data[0][i])
+
+    var popDensity = []
+    data[0].forEach(function(d) {
+        if (d["Series"] === "popDensity") {
+            popDensity.push(d)
         }
-    }
-    console.log(dataGlobe)
+    })
+    // console.log(popDensity)
+
+    popDensity.forEach(function(d) {
+        if (d["Country"] === "Afghanistan") {
+            console.log(d["2014"])
+        }
+    })
+
+    createGlobe(popDensity);
+
 };
+    // console.log(foodIndex)
+
+    // console.log(data[0][0]["Series"])
+    // var dataGlobe = []
+    // for (var i = 0; i < data[0].length; i++) {
+    //     if(data[0][i]["Series"] == "EN.POP.DNST"){
+    //         dataGlobe.push(data[0][i])
+    //     }
+    // }
+    // console.log(dataGlobe)
+

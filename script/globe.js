@@ -1,21 +1,20 @@
-var width = 600,
-    height = 500,
+var w = 600,
+    h = 500,
     sens = 0.25,
     focused;
 
 
-function createGlobe() {
+function createGlobe(popDensity, year = 2014) {
 
       //SVG container
       var svg = d3.select("#globe").append("svg")
-                  .attr("width", width)
-                  .attr("height", height);
+                  .attr("width", w)
+                  .attr("height", h);
 
       //Setting projection
       var projection = d3.geoOrthographic ()
-        .scale(245)
-        .rotate([0, 0])
-        .translate([width / 2, height / 2])
+        .scale(250)
+        .translate([w / 2, h / 2])
         .clipAngle(90);
 
       var path = d3.geoPath()
@@ -28,8 +27,8 @@ function createGlobe() {
         .attr("class", "water")
         .attr("d", path);
 
-      var countryTooltip = d3.select("#globe").append("div").attr("class", "countryTooltip"),
-      countryList = d3.select("#globe").append("select").attr("name", "countries");
+      var toolTip = d3.select("#globe").append("div").attr("class", "toolTip"),
+      countryDropDown = d3.select("#globe").append("select").attr("name", "countries");
 
 
        d3.queue()
@@ -41,18 +40,29 @@ function createGlobe() {
 
       function ready(error, world, countryData) {
 
-        var countryById = {},
+
+        var test = []
+        countryData.forEach(function(d) {
+        test.push(d.name)
+        })
+        console.log(test)
+
+
+        var countryId = {},
         countries = topojson.feature(world, world.objects.countries).features;
+
 
         //Adding countries to select
 
         countryData.forEach(function(d) {
-          countryById[d.id] = d.name;
-          option = countryList.append("option");
+          countryId[d.id] = d.name;
+          option = countryDropDown.append("option");
           option.text(d.name);
           option.property("value", d.id);
         });
 
+
+        // console.log(countryData)
         //Drawing countries on the globe
 
         var world = svg.selectAll("path.land")
@@ -60,6 +70,15 @@ function createGlobe() {
         .enter().append("path")
         .attr("class", "land")
         .attr("d", path)
+        .attr("fill", function(d) {
+          // checks if country code is also present in the countries array
+            if (test.includes(countryId[d.id])) {
+                return "green"
+            }
+            else {
+                return "grey"
+            }
+        })
 
         //Drag event
 
@@ -75,19 +94,19 @@ function createGlobe() {
         //Mouse events
 
         .on("mouseover", function(d) {
-          countryTooltip.text(countryById[d.id])
+          toolTip.text(countryId[d.id])
           .style("left", (d3.event.pageX + 7) + "px")
           .style("top", (d3.event.pageY - 15) + "px")
           .style("display", "block")
           .style("opacity", 1);
         })
         .on("mouseout", function(d) {
-          countryTooltip.style("opacity", 0)
+          toolTip.style("opacity", 0)
           .style("display", "none");
         })
         .on("mousemove", function(d) {
-          console.log(countryById[d.id])
-          countryTooltip.style("left", (d3.event.pageX + 7) + "px")
+          console.log(countryId[d.id])
+          toolTip.style("left", (d3.event.pageX + 7) + "px")
           .style("top", (d3.event.pageY - 15) + "px");
         });
 
@@ -104,7 +123,7 @@ function createGlobe() {
 
         (function transition() {
           d3.transition()
-          .duration(2500)
+          .duration(1000)
           .tween("rotate", function() {
             var r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
             return function(t) {
@@ -116,9 +135,9 @@ function createGlobe() {
           })();
         });
 
-        function country(cnt, sel) {
-          for(var i = 0, l = cnt.length; i < l; i++) {
-            if(cnt[i].id == sel.value) {return cnt[i];}
+        function country(countries, self) {
+          for(var i = 0, l = countries.length; i < l; i++) {
+            if(countries[i].id == self.value) {return countries[i];}
           }
         };
 
