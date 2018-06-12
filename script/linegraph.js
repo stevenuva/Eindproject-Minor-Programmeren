@@ -1,5 +1,8 @@
 function createLineGraph(popDensity, foodIndex, country = "World"){
 
+    // change the title of the map
+    document.getElementById("lineGraphTitle").innerHTML = "Line lineGraph: " + country + " (" + year + ")";
+
     var w = 600,
     h = 500;
 

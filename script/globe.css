@@ -15,9 +15,6 @@
 }
 
 select {
-  position: absolute;
-  top: 400px;
-  left: 1100px;
   border: solid #ccc 1px;
   padding: 3px;
   box-shadow: inset 1px 1px 2px #ddd8dc;

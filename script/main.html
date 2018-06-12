@@ -12,10 +12,12 @@
     <!-- import necessary libraries -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider@0.2.1/build/d3-simple-slider.js"></script>
     <script src="main.js"></script>
     <script src="globe.js"></script>
     <script src="linegraph.js"></script>
     <script src="piechart.js"></script>
+    <script src="timeslider.js"></script>
 
     <!--
         source bootstrap: https://getbootstrap.com/docs/3.3/getting-started/
@@ -61,17 +63,36 @@
     <div class="container-fluid">
         <div class="row">
             <div id="globe">
-                <h2>Globe (YEAR)</h2>
+                <h2 id="globeTitle">Globe (YEAR)</h2>
             </div>
         </div>
+        <div class="row align-items-center">
+            <div id="gradientLegend">
+            </div>
+            <p>Population Density (per km<sup>2</sup>)</p>
+        </div>
+        <br>
         <div class="row">
-            <div class="col-md-2">
-                <h2>Pie Chart (COUNTRY) (YEAR)</h2>
+            <div id="selectCountry">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+        <h3>Time Slider</h3>
+          <div class="col-sm">
+            <div id="timeSlider"></div>
+          </div>
+        </div>
+        <a id="resetTime" href="#">Reset</a>
+        <br>
+        <div class="row">
+            <div class="col-sm-6">
                 <div id="pieChart">
+                    <h2 id="pieChartTitle">Pie Chart (COUNTRY) (YEAR)</h2>
                 </div>
             </div>
-            <div class="col-md-2">
-                <h2>Line Graph (COUNTRY)</h2>
+            <div class="col-sm-6">
+                <h2 id="lineGraphTitle">Line Graph (COUNTRY)</h2>
                 <div id="lineGraph">
                 </div>
             </div>

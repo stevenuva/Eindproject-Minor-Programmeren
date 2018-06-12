@@ -1,5 +1,9 @@
 function createPieChart(agrData, forestData, country = "World", year = 2014){
 
+
+     // change the title of the map
+    document.getElementById("pieChartTitle").innerHTML = "Pie Chart: " + country + " (" + year + ")";
+
     var w = 600,
     h = 500,
     radius = w / 2.35;
@@ -29,8 +33,6 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
     var arc = d3.arc()
         .outerRadius(radius - 10)
         .innerRadius(0);
-        // .startAngle()
-        // .endAngle()
 
     var arcLabel = d3.arc()
         .outerRadius(radius - 100)
@@ -64,5 +66,4 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
       .attr("transform", function(d) { return "translate(" + arcLabel.centroid(d) + ")"; })
       .attr("dy", "0.35em")
       .text(function(d, i) { return pieLabels[i]; })
-
 };
