@@ -30,7 +30,14 @@
 - added on click funtion globe
 - added svg for line graph
 
+# day 7
+- added time slider
+- added color legend globe
+- inner html to change title globe, pie and line graph
+
+
+
 ## to do next days/weeks:
 - fix placement with bootstrap
 - add line graph, including drop down menu
-- add time line
+
