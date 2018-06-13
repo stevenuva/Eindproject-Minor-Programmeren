@@ -35,9 +35,13 @@
 - added color legend globe
 - inner html to change title globe, pie and line graph
 
+# day 8
+- added simple linegraph (difficulty with date conversion (data containing only years))
+- added tooltip pie chart
+- added tooltip to linegraph
 
 
 ## to do next days/weeks:
 - fix placement with bootstrap
-- add line graph, including drop down menu
+- add multi line graph, including drop down menu
 

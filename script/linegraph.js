@@ -42,9 +42,8 @@ function createLineGraph(popTotal, foodIndex, country = "World"){
             .attr("transform",
                   "translate(" + margin.left + "," + margin.top + ")");
 
-    var formatYear = d3.timeFormat("%Y");
 
-    var toolTip = d3.select("#lineGraph").append("div").attr("class", "toolTip")
+
 
      // Scale the range of the data
     x.domain([d3.min(foodLine, function(d) {
@@ -52,24 +51,26 @@ function createLineGraph(popTotal, foodIndex, country = "World"){
    return d.date; }), d3.max(foodLine, function(d) { return d.date; })]);
   y.domain([0, 160]);
 
+  var toolTip = d3.select("#lineGraph").append("div").attr("class", "toolTip")
+
   // Add the valueline path.
   svg.append("path")
       .data([foodLine])
-      .attr("class", "line")
+      .attr("class", "line1")
       .attr("d", valueLine)
       .on('mousemove', function(d) {
-            toolTip.text(this.date)
-            .style("left", (d3.event.pageX + 7) + "px")
+        console.log(x.invert(d3.mouse(this)[0]))
+        console.log(y.invert(d3.mouse(this)[1]))
+        toolTip.text(" of the total land area")
+            .style("left", (d3.event.layerX + 3) + "px")
             .style('top', (d3.event.layerY + 10) + 'px')
             .style('display', 'block')
-            console.log(this);
-        })
-        .on("mouseout", function(d) {
-          toolTip.style("display", "none");
-        });
+            .style("opacity", 1);
 
-
-
+      })
+      .on("mouseout", function(d) {
+         toolTip.style("display", "none");
+      });
 
     var xAxis = d3.axisBottom(x)
                 .tickFormat(function(d){
