@@ -10,7 +10,8 @@ function createTimeSlider(){
     .tickValues(years)
     .on('onchange', val => {
       // change the title of the map
-      document.getElementById("globeTitle").innerHTML = "Globe (" + (d3.timeFormat('%Y')(val))  + ")";
+      document.getElementById("globeTitle").innerHTML = "Globe (" + (d3.timeFormat('%Y')(val))  + ")"
+      document.getElementById("pieChartTitle").innerHTML = "Pie Chart: World (" + (d3.timeFormat('%Y')(val))  + ")";
        console.log(d3.timeFormat('%Y')(val));
     });
 
@@ -21,6 +22,4 @@ function createTimeSlider(){
     .attr("transform", "translate(30,30)");
 
   g.call(timeSlider);
-
-  d3.select("a#resetTime").on("click", () => timeSlider.value(new Date(2014, 12, 31)));
 };

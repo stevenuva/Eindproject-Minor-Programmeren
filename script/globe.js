@@ -137,7 +137,7 @@ function createGlobe(popDensity, year = 2014) {
         });
 
         function country(countries, self) {
-          for(var i = 0, l = countries.length; i < l; i++) {
+          for(var i = 0; i < countries.length; i++) {
             if(countries[i].id == self.value) {return countries[i];}
           }
         };

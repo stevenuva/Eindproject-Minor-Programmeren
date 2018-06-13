@@ -63,16 +63,6 @@ function restructData(data){
     createPieChart(agricultureLand, forestLand);
     createTimeSlider();
     createGradientLegend()
-    //createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex);
+    createLineGraph(popTotal, foodIndex, "World");
 };
-    // console.log(foodIndex)
-
-    // console.log(data[0][0]["Series"])
-    // var dataGlobe = []
-    // for (var i = 0; i < data[0].length; i++) {
-    //     if(data[0][i]["Series"] == "EN.POP.DNST"){
-    //         dataGlobe.push(data[0][i])
-    //     }
-    // }
-    // console.log(dataGlobe)
 

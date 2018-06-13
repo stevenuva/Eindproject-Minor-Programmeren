@@ -28,7 +28,7 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
 
     var remaining = 100 - pieValues[0] - pieValues[1]
     pieValues.push(remaining.toFixed(2))
-    console.log(pieValues)
+
     // generate arc
     var arc = d3.arc()
         .outerRadius(radius - 10)
@@ -44,6 +44,8 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
             return d;
         });
 
+    var toolTip = d3.select("#pieChart").append("div").attr("class", "toolTip")
+
     var svg = d3.select("#pieChart").append("svg")
             .attr("width", w)
             .attr("height", h)
@@ -54,6 +56,15 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
         .data(pie(pieValues))
         .enter().append("g")
         .attr("class", "arc")
+        .on('mousemove', function(d) {
+            toolTip.text(d["value"] + "% of the total land area")
+            .style("left", (d3.event.pageX + 7) + "px")
+            .style('top', (d3.event.layerY + 10) + 'px')
+            .style('display', 'block');
+        })
+        .on("mouseout", function(d) {
+          toolTip.style("display", "none");
+        });
 
     g.append("path")
         .attr("d", arc)
@@ -66,4 +77,5 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
       .attr("transform", function(d) { return "translate(" + arcLabel.centroid(d) + ")"; })
       .attr("dy", "0.35em")
       .text(function(d, i) { return pieLabels[i]; })
+
 };
