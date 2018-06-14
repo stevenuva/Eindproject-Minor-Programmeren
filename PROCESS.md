@@ -40,8 +40,15 @@
 - added tooltip pie chart
 - added tooltip to linegraph
 
+# day 9
+- added extra line for multi line graph
+- added dropdown menu for line graph
+- vizualisations are linked (removing html)
+
 
 ## to do next days/weeks:
 - fix placement with bootstrap
-- add multi line graph, including drop down menu
+- add story
+- interactivy drop down menu line graph
+- d3 nice transitions
 

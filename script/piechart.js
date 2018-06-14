@@ -1,6 +1,6 @@
 function createPieChart(agrData, forestData, country = "World", year = 2014){
 
-
+    d3.selectAll("#pieChart svg").remove("svg");
      // change the title of the map
     document.getElementById("pieChartTitle").innerHTML = "Pie Chart: " + country + " (" + year + ")";
 
@@ -24,7 +24,13 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
 
     var color = ["#fdae61", "#b2df8a", "#ffffb3"]
 
-    var pieLabels = ["Agricultural land", "Forest area", "Other area"]
+    if (year > 1989) {
+        var pieLabels = ["Agricultural land", "Forest area", "Other area"]
+    }
+    else {
+        var pieLabels = ["Agricultural land", "", "Other area"]
+    }
+
 
     var remaining = 100 - pieValues[0] - pieValues[1]
     pieValues.push(remaining.toFixed(2))
@@ -58,7 +64,7 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
         .attr("class", "arc")
         .on('mousemove', function(d) {
             toolTip.text(d["value"] + "% of the total land area")
-            .style("left", (d3.event.pageX + 7) + "px")
+            .style("left", (d3.event.layerX + 3) + "px")
             .style('top', (d3.event.layerY + 10) + 'px')
             .style('display', 'block');
         })
@@ -77,5 +83,4 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
       .attr("transform", function(d) { return "translate(" + arcLabel.centroid(d) + ")"; })
       .attr("dy", "0.35em")
       .text(function(d, i) { return pieLabels[i]; })
-
 };

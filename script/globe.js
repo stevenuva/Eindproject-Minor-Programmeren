@@ -4,7 +4,9 @@ var w = 600,
     focused;
 
 
-function createGlobe(popDensity, year = 2014) {
+function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex, year = 2014) {
+
+
 
       //SVG container
       var svg = d3.select("#globe").append("svg")
@@ -27,8 +29,12 @@ function createGlobe(popDensity, year = 2014) {
         .attr("class", "water")
         .attr("d", path);
 
-      var toolTip = d3.select("#globe").append("div").attr("class", "toolTip"),
-      countryDropDown = d3.select("#selectCountry").append("select").attr("name", "countries");
+      var toolTip = d3.select("#globe").append("div").attr("class", "toolTip")
+
+      // if (typeof countryDropDown !== 'undefined') {
+        var countryDropDown = d3.select("#selectCountry").append("select").attr("name", "countries");
+
+
 
 
        d3.queue()
@@ -72,7 +78,7 @@ function createGlobe(popDensity, year = 2014) {
         .attr("d", path)
         .attr("fill", function(d) {
           // checks if country code is also present in the countries array
-            if (test.includes(countryId[d.id])) {
+            if (year == 2014) {
                 return "green"
             }
             else {
@@ -107,23 +113,40 @@ function createGlobe(popDensity, year = 2014) {
         .on("click", function(d) {
           toolTip.text(countryId[d.id])
           toolTip.style("left", (d3.event.pageX + 7) + "px")
-          .style("top", (d3.event.pageY - 15) + "px");
+          .style("top", (d3.event.pageY - 15) + "px")
+          d3.selectAll("#lineGraph svg").remove("svg");
+          d3.selectAll("#selectIndicator select").remove("select");
+          createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex, countryId[d.id]);
         });
 
         //Country focus on option select
 
         d3.select("select").on("change", function() {
-          console.log("test2")
+          console.log(this)
+          console.log(this.value)
+          console.log("Value", this[this.value])
+          console.log("TEST", this[this.selectedIndex].text)
+
+          passCountry = this[this.selectedIndex].text
+
           var rotate = projection.rotate(),
           focusedCountry = country(countries, this),
           p = d3.geoCentroid(focusedCountry);
+
+
+
+
+
+          d3.selectAll("#lineGraph svg").remove("svg");
+          d3.selectAll("#selectIndicator select").remove("select");
+          createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex, passCountry)
 
           svg.selectAll(".focused").classed("focused", focused = false);
 
         //Globe rotating
 
         (function transition() {
-          console.log("transition")
+          // console.log("transition")
           d3.transition()
           .duration(1000)
           .tween("rotate", function() {

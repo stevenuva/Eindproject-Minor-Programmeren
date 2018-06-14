@@ -59,9 +59,9 @@ function restructData(data){
     //     }
     // })
 
-    createGlobe(popDensity, foodIndex);
+    createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex);
     createPieChart(agricultureLand, forestLand);
-    createTimeSlider();
+    createTimeSlider(popDensity, foodIndex, cropIndex, livestockIndex, agricultureLand, forestLand);
     createGradientLegend()
     createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex, "World");
 };
