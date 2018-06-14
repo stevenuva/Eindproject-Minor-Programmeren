@@ -63,6 +63,6 @@ function restructData(data){
     createPieChart(agricultureLand, forestLand);
     createTimeSlider();
     createGradientLegend()
-    createLineGraph(popTotal, foodIndex, "World");
+    createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex, "World");
 };
 

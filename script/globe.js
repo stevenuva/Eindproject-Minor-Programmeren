@@ -113,6 +113,7 @@ function createGlobe(popDensity, year = 2014) {
         //Country focus on option select
 
         d3.select("select").on("change", function() {
+          console.log("test2")
           var rotate = projection.rotate(),
           focusedCountry = country(countries, this),
           p = d3.geoCentroid(focusedCountry);

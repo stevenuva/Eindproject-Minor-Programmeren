@@ -1,10 +1,25 @@
-function createLineGraph(popTotal, foodIndex, country = "World"){
+function createLineGraph(popTotal, foodIndex, cropIndex , livestockIndex , country = "World"){
+
+var allData = [foodIndex, cropIndex, livestockIndex]
+var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
+
 
     // change the title of the map
     document.getElementById("lineGraphTitle").innerHTML = "Line Graph: " + country;
 
-    // var w = 600,
-    // h = 500;
+    countryDropDown = d3.select("#selectIndicator").append("select").attr("name", "indicator");
+
+    allData.forEach(function(d, i) {
+          option = countryDropDown.append("option");
+          option.text(allDataText[i]);
+          option.property("value", d[0]["Series"]);
+        });
+
+
+    d3.select("#selectIndicator").on("change", function() {
+        console.log(this)
+        console.log("ok")
+    });
 
     foodLine = []
 
@@ -16,7 +31,7 @@ function createLineGraph(popTotal, foodIndex, country = "World"){
        }
     })
 
-    console.log(foodLine)
+    // console.log(foodLine)
 
 
     // Set the dimensions of the canvas / graph
@@ -59,9 +74,7 @@ function createLineGraph(popTotal, foodIndex, country = "World"){
       .attr("class", "line1")
       .attr("d", valueLine)
       .on('mousemove', function(d) {
-        console.log(x.invert(d3.mouse(this)[0]))
-        console.log(y.invert(d3.mouse(this)[1]))
-        toolTip.text(" of the total land area")
+        toolTip.text(Math.round(x.invert(d3.mouse(this)[0])) + ": " + (y.invert(d3.mouse(this)[1]).toFixed(2)))
             .style("left", (d3.event.layerX + 3) + "px")
             .style('top', (d3.event.layerY + 10) + 'px')
             .style('display', 'block')
