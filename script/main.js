@@ -1,13 +1,11 @@
-var jsonData = []
-
-
-var popDenisty = []
+var popDensity = []
 var agricultureLand = []
 var forestLand = []
 var popTotal = []
 var foodIndex = []
 var cropIndex = []
 var livestockIndex = []
+var year = 2014
 
 // call function load data when page is loaded
 window.onload = function() {
@@ -30,6 +28,7 @@ function loadData() {
  *  calls another function to clean the data
  */
 function checkResponse(error, response) {
+    var jsonData = []
     if (error) throw error;
     else {
         // push the different json outputs to an array
@@ -43,12 +42,8 @@ function checkResponse(error, response) {
 
 function restructData(data){
 
-    var popDensity = []
     data[0].forEach(function(d) {
         eval(d["Series"]).push(d)
-        // if (d["Series"] === "popDensity") {
-        //     popDensity.push(d)
-        // }
     })
     // console.log(popDensity)
 
@@ -59,10 +54,10 @@ function restructData(data){
     //     }
     // })
 
-    createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex);
+    createGlobe();
     createPieChart(agricultureLand, forestLand);
     createGradientLegend()
-    createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex, "World");
+    createLineGraph("World");
 
 
     createTimeSlider(popDensity, foodIndex, cropIndex, livestockIndex, agricultureLand, forestLand);

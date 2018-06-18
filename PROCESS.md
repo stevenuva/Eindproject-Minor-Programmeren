@@ -45,6 +45,14 @@
 - added dropdown menu for line graph
 - vizualisations are linked (removing html)
 
+# day 10
+- presentation
+
+# day 11
+- updated globe with color variable
+- updated gradient scale
+- added global variables (makes code less messy)
+
 
 ## to do next days/weeks:
 - fix placement with bootstrap

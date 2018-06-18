@@ -1,5 +1,10 @@
 function createPieChart(agrData, forestData, country = "World", year = 2014){
 
+
+
+    console.log(popDensity)
+
+
     d3.selectAll("#pieChart svg").remove("svg");
      // change the title of the map
     document.getElementById("pieChartTitle").innerHTML = "Pie Chart: " + country + " (" + year + ")";

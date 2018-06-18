@@ -1,4 +1,4 @@
-function createLineGraph(popTotal, foodIndex, cropIndex , livestockIndex , country = "World"){
+function createLineGraph(country = "World"){
 
 
   // console.log(popTotal)

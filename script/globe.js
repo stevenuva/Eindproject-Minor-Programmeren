@@ -4,15 +4,10 @@ var w = 600,
     focused;
 
 
-function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex, year = 2014) {
+function createGlobe() {
 
 
     console.log(popDensity)
-
-
-
-
-
 
       //SVG container
       var svg = d3.select("#globe").append("svg")
@@ -82,11 +77,11 @@ function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex,
         .attr("class", "land")
         .attr("d", path)
         .attr("fill", function(d) {
-            console.log(countryId[d.id])
+            // console.log(countryId[d.id])
             popDensity.forEach(function(e) {
                 if (e["Country"] == countryId[d.id]) {
                     testColor = e[year]
-                    console.log(testColor)
+                    // console.log(testColor)
                 }
             })
             if (testColor > 0) {
@@ -141,7 +136,7 @@ function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex,
           .style("top", (d3.event.pageY - 15) + "px")
           d3.selectAll("#lineGraph svg").remove("svg");
           d3.selectAll("#selectIndicator select").remove("select");
-          createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex, countryId[d.id]);
+          createLineGraph(countryId[d.id]);
         });
 
         //Country focus on option select
@@ -164,7 +159,7 @@ function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex,
 
           d3.selectAll("#lineGraph svg").remove("svg");
           d3.selectAll("#selectIndicator select").remove("select");
-          createLineGraph(popTotal, foodIndex, cropIndex, livestockIndex, passCountry)
+          createLineGraph(passCountry)
 
           svg.selectAll(".focused").classed("focused", focused = false);
 
