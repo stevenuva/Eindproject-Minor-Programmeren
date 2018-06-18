@@ -1,7 +1,7 @@
 function createLineGraph(popTotal, foodIndex, cropIndex , livestockIndex , country = "World"){
 
 
-  console.log(popTotal)
+  // console.log(popTotal)
 
 var allData = [foodIndex, cropIndex, livestockIndex]
 var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
@@ -26,6 +26,9 @@ var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
 
     // change the title of the map
     document.getElementById("lineGraphTitle").innerHTML = "Line Graph: " + country;
+
+
+    // console.log(document.getElementById("lineGraphTitle").innerHTML)
 
     countryDropDown = d3.select("#selectIndicator").append("select").attr("name", "indicator");
 

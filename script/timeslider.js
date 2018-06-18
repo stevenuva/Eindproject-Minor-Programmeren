@@ -14,7 +14,8 @@ function createTimeSlider(popDensity, foodIndex, cropIndex, livestockIndex, agri
       d3.selectAll("#selectCountry select").remove("select");
       document.getElementById("globeTitle").innerHTML = "Globe (" + (d3.timeFormat('%Y')(val))  + ")"
       document.getElementById("pieChartTitle").innerHTML = "Pie Chart: World (" + (d3.timeFormat('%Y')(val))  + ")";
-      createPieChart(agricultureLand, forestLand, country = "World", year = d3.timeFormat('%Y')(val))
+      country = (document.getElementById("lineGraphTitle").innerHTML).replace("Line Graph: ", "")
+      createPieChart(agricultureLand, forestLand, country, year = d3.timeFormat('%Y')(val))
       createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex, year = d3.timeFormat('%Y')(val));
        console.log(d3.timeFormat('%Y')(val));
     });

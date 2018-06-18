@@ -7,6 +7,12 @@ var w = 600,
 function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex, year = 2014) {
 
 
+    console.log(popDensity)
+
+
+
+
+
 
       //SVG container
       var svg = d3.select("#globe").append("svg")
@@ -33,8 +39,6 @@ function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex,
 
       // if (typeof countryDropDown !== 'undefined') {
         var countryDropDown = d3.select("#selectCountry").append("select").attr("name", "countries");
-
-
 
 
        d3.queue()
@@ -70,6 +74,7 @@ function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex,
 
         // console.log(countryData)
         //Drawing countries on the globe
+        var testColor;
 
         var world = svg.selectAll("path.land")
         .data(countries)
@@ -77,13 +82,33 @@ function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex,
         .attr("class", "land")
         .attr("d", path)
         .attr("fill", function(d) {
-          // checks if country code is also present in the countries array
-            if (year == 2014) {
-                return "green"
+            console.log(countryId[d.id])
+            popDensity.forEach(function(e) {
+                if (e["Country"] == countryId[d.id]) {
+                    testColor = e[year]
+                    console.log(testColor)
+                }
+            })
+            if (testColor > 0) {
+                switch (true) {
+                    case (testColor <= 25):
+                        return "#ffffb2"
+                    case (testColor <= 50):
+                        return "#fed976"
+                    case (testColor <= 100):
+                        return "#feb24c"
+                    case (testColor <= 150):
+                        return "#fd8d3c"
+                    case (testColor <= 200):
+                        return "#f03b20"
+                    default:
+                        return "#bd0026"
+                }
             }
             else {
                 return "grey"
             }
+            var testColor = 0
         })
 
         //Drag event
@@ -122,10 +147,10 @@ function createGlobe(popDensity, popTotal, foodIndex, cropIndex, livestockIndex,
         //Country focus on option select
 
         d3.select("select").on("change", function() {
-          console.log(this)
-          console.log(this.value)
-          console.log("Value", this[this.value])
-          console.log("TEST", this[this.selectedIndex].text)
+          // console.log(this)
+          // console.log(this.value)
+          // console.log("Value", this[this.value])
+          // console.log("TEST", this[this.selectedIndex].text)
 
           passCountry = this[this.selectedIndex].text
 
@@ -191,15 +216,16 @@ linearGradient
     .attr("x2", "100%")
     .attr("y2", "0%");
 
-//Set the color for the start (0%)
-linearGradient.append("stop")
-    .attr("offset", "0%")
-    .attr("stop-color", "#e4e4d9"); //light blue
+  //A color scale
+var colorScale = d3.scaleLinear()
+    .range(["#ffffb2", "#fed976","#feb24c", "#fd8d3c", "#f03b20","#bd0026"]);
 
-//Set the color for the end (100%)
-linearGradient.append("stop")
-    .attr("offset", "100%")
-    .attr("stop-color", "#215f00"); //dark blue
+
+linearGradient.selectAll("stop")
+    .data( colorScale.range() )
+    .enter().append("stop")
+    .attr("offset", function(d,i) { return i/(colorScale.range().length-1); })
+    .attr("stop-color", function(d) { return d; });
 
   //Draw the rectangle and fill with gradient
 svg.append("rect")
@@ -210,6 +236,7 @@ svg.append("rect")
 var x = d3.scaleLinear()
   .domain([0,250])
   .range([2,350])
+
 
 var axis = d3.axisBottom(x)
              .ticks(5);
