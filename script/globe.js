@@ -5,55 +5,50 @@ var w = 600,
 
 var countryId = {}
 
-
 function createGlobe() {
 
-    document.getElementById("globeTitle").innerHTML = "Globe: " + country + " (" + year + ")";
+    // create svg for the globe
+    var svg = d3.select("#globe").append("svg")
+        .attr("width", w)
+        .attr("height", h);
 
-    console.log(popDensity)
-
-      //SVG container
-      var svg = d3.select("#globe").append("svg")
-                  .attr("width", w)
-                  .attr("height", h);
-
-      //Setting projection
-      var projection = d3.geoOrthographic ()
+    // projection for the globe
+    var projection = d3.geoOrthographic ()
         .scale(250)
         .translate([w / 2, h / 2])
         .clipAngle(90);
 
-      var path = d3.geoPath()
+    var path = d3.geoPath()
         .projection(projection);
 
-      //Adding water
-
-      svg.append("path")
+    // draw water
+    svg.append("path")
         .datum({type: "Sphere"})
         .attr("class", "water")
         .attr("d", path);
 
-      var toolTip = d3.select("#globe").append("div").attr("class", "toolTip")
+    // add tooltip to the globe
+    var toolTip = d3.select("#globe").append("div").attr("class", "toolTip")
 
-      // if (typeof countryDropDown !== 'undefined') {
-        var countryDropDown = d3.select("#selectCountry").append("select").attr("name", "countries");
+    // add drop down menu to the globe
+    var countryDropDown = d3.select("#selectCountry").append("select").attr("name", "countries");
 
-
-       d3.queue()
-          .defer(d3.json, "world-110m.json")
-          .defer(d3.tsv, "world-110m.tsv")
-          .await(ready);
+    // load map and country names
+    d3.queue()
+        .defer(d3.json, "world-110m.json")
+        .defer(d3.tsv, "world-110m.tsv")
+        .await(ready);
 
       //Main function
 
       function ready(error, world, countryData) {
 
 
-        var test = []
-        countryData.forEach(function(d) {
-        test.push(d.name)
-        })
-        // console.log(test)
+        // var test = []
+        // countryData.forEach(function(d) {
+        // test.push(d.name)
+        // })
+        // // console.log(test)
 
         var countries = topojson.feature(world, world.objects.countries).features;
 
@@ -77,35 +72,6 @@ function createGlobe() {
         .enter().append("path")
         .attr("class", "land")
         .attr("d", path)
-        .attr("fill", function(d) {
-            // console.log(countryId[d.id])
-            popDensity.forEach(function(e) {
-                if (e["Country"] == countryId[d.id]) {
-                    densityScore = e[year]
-                    // console.log(densityScore)
-                }
-            })
-            if (densityScore > 0) {
-                switch (true) {
-                    case (densityScore <= 25):
-                        return "#ffffb2"
-                    case (densityScore <= 50):
-                        return "#fed976"
-                    case (densityScore <= 100):
-                        return "#feb24c"
-                    case (densityScore <= 150):
-                        return "#fd8d3c"
-                    case (densityScore <= 200):
-                        return "#f03b20"
-                    default:
-                        return "#bd0026"
-                }
-            }
-            else {
-                return "lightgrey"
-            }
-            var densityScore = 0
-        })
 
         //Drag event
 
@@ -132,7 +98,14 @@ function createGlobe() {
           .style("display", "none");
         })
         .on("click", function(d) {
-          toolTip.text(countryId[d.id])
+            var tiptext = "No data available"
+            popDensity.forEach(function(e) {
+                if (e["Country"] == countryId[d.id]) {
+                    tiptext = parseFloat(e[year]).toFixed(2)
+                    // console.log(densityScore)
+                }
+            })
+          toolTip.text(countryId[d.id] + ": " + tiptext + " inhabitants per km^2")
           toolTip.style("left", (d3.event.pageX + 7) + "px")
           .style("top", (d3.event.pageY - 15) + "px")
           d3.selectAll("#lineGraph svg").remove("svg");
@@ -142,6 +115,8 @@ function createGlobe() {
           createPieChart();
           document.getElementById("globeTitle").innerHTML = "Globe: " + country + " (" + year + ")";
         });
+
+        colorUpdate()
 
         //Country focus on option select
 
@@ -253,6 +228,9 @@ d3.select("#gradient")
 };
 
 function colorUpdate() {
+
+    var svg = d3.select("#globe")
+
     svg.selectAll("path.land")
     .attr("fill", function(d) {
             // console.log(countryId[d.id])

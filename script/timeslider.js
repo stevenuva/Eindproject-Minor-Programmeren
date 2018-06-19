@@ -10,14 +10,14 @@ function createTimeSlider() {
     .tickValues(years)
     .on('onchange', val => {
       year = d3.timeFormat('%Y')(val)
-      // change the title of the map
-      d3.selectAll("#globe svg").remove("svg");
       d3.selectAll("#selectCountry select").remove("select");
       document.getElementById("globeTitle").innerHTML = "Globe (" + year  + ")"
       document.getElementById("pieChartTitle").innerHTML = "Pie Chart: World (" + year  + ")";
       country = (document.getElementById("lineGraphTitle").innerHTML).replace("Line Graph: ", "")
+      d3.selectAll("#lineGraph svg").remove("svg");
+      d3.selectAll("#selectIndicator select").remove("select");
       createPieChart()
-      createGlobe();
+      createLineGraph();
       colorUpdate()
     });
 

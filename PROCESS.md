@@ -53,10 +53,18 @@
 - updated gradient scale
 - added global variables (makes code less messy)
 
+# day 12
+- created update function to update the colors on the globe
+- linked globe and line graph
+- cleaned up part of the code
+- adding functions to avoid duplicate coding
+
 
 ## to do next days/weeks:
 - fix placement with bootstrap
 - add story
 - interactivy drop down menu line graph
 - d3 nice transitions
+- adding more functions to avoid duplicate coding
+- clean up code
 
