@@ -1,4 +1,4 @@
-function createPieChart(agrData, forestData, country = "World", year = 2014){
+function createPieChart() {
 
 
 
@@ -15,13 +15,13 @@ function createPieChart(agrData, forestData, country = "World", year = 2014){
 
     var pieValues = []
 
-    agrData.forEach(function(d) {
+    agricultureLand.forEach(function(d) {
         if (d["Country"] === String(country)) {
             pieValues.push(Number(d[year]).toFixed(2))
         }
     })
 
-    forestData.forEach(function(d) {
+    forestLand.forEach(function(d) {
         if (d["Country"] === String(country)) {
             pieValues.push(Number(d[year]).toFixed(2))
         }

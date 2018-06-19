@@ -3,9 +3,12 @@ var w = 600,
     sens = 0.25,
     focused;
 
+var countryId = {}
+
 
 function createGlobe() {
 
+    document.getElementById("globeTitle").innerHTML = "Globe: " + country + " (" + year + ")";
 
     console.log(popDensity)
 
@@ -52,9 +55,7 @@ function createGlobe() {
         })
         // console.log(test)
 
-
-        var countryId = {},
-        countries = topojson.feature(world, world.objects.countries).features;
+        var countries = topojson.feature(world, world.objects.countries).features;
 
 
         //Adding countries to select
@@ -69,7 +70,7 @@ function createGlobe() {
 
         // console.log(countryData)
         //Drawing countries on the globe
-        var testColor;
+        var densityScore;
 
         var world = svg.selectAll("path.land")
         .data(countries)
@@ -80,30 +81,30 @@ function createGlobe() {
             // console.log(countryId[d.id])
             popDensity.forEach(function(e) {
                 if (e["Country"] == countryId[d.id]) {
-                    testColor = e[year]
-                    // console.log(testColor)
+                    densityScore = e[year]
+                    // console.log(densityScore)
                 }
             })
-            if (testColor > 0) {
+            if (densityScore > 0) {
                 switch (true) {
-                    case (testColor <= 25):
+                    case (densityScore <= 25):
                         return "#ffffb2"
-                    case (testColor <= 50):
+                    case (densityScore <= 50):
                         return "#fed976"
-                    case (testColor <= 100):
+                    case (densityScore <= 100):
                         return "#feb24c"
-                    case (testColor <= 150):
+                    case (densityScore <= 150):
                         return "#fd8d3c"
-                    case (testColor <= 200):
+                    case (densityScore <= 200):
                         return "#f03b20"
                     default:
                         return "#bd0026"
                 }
             }
             else {
-                return "grey"
+                return "lightgrey"
             }
-            var testColor = 0
+            var densityScore = 0
         })
 
         //Drag event
@@ -136,7 +137,10 @@ function createGlobe() {
           .style("top", (d3.event.pageY - 15) + "px")
           d3.selectAll("#lineGraph svg").remove("svg");
           d3.selectAll("#selectIndicator select").remove("select");
-          createLineGraph(countryId[d.id]);
+          country = countryId[d.id]
+          createLineGraph();
+          createPieChart();
+          document.getElementById("globeTitle").innerHTML = "Globe: " + country + " (" + year + ")";
         });
 
         //Country focus on option select
@@ -147,10 +151,10 @@ function createGlobe() {
           // console.log("Value", this[this.value])
           // console.log("TEST", this[this.selectedIndex].text)
 
-          passCountry = this[this.selectedIndex].text
+          country = this[this.selectedIndex].text
 
           var rotate = projection.rotate(),
-          focusedCountry = country(countries, this),
+          focusedCountry = countryFocus(countries, this),
           p = d3.geoCentroid(focusedCountry);
 
 
@@ -159,7 +163,9 @@ function createGlobe() {
 
           d3.selectAll("#lineGraph svg").remove("svg");
           d3.selectAll("#selectIndicator select").remove("select");
-          createLineGraph(passCountry)
+          createLineGraph()
+          createPieChart()
+          colorUpdate()
 
           svg.selectAll(".focused").classed("focused", focused = false);
 
@@ -180,7 +186,7 @@ function createGlobe() {
           })();
         });
 
-        function country(countries, self) {
+        function countryFocus(countries, self) {
           for(var i = 0; i < countries.length; i++) {
             if(countries[i].id == self.value) {return countries[i];}
           }
@@ -245,3 +251,36 @@ d3.select("#gradient")
         .attr("transform", "translate(0,20)")
         .call(axis);
 };
+
+function colorUpdate() {
+    svg.selectAll("path.land")
+    .attr("fill", function(d) {
+            // console.log(countryId[d.id])
+            popDensity.forEach(function(e) {
+                if (e["Country"] == countryId[d.id]) {
+                    densityScore = e[year]
+                    // console.log(densityScore)
+                }
+            })
+            if (densityScore > 0) {
+                switch (true) {
+                    case (densityScore <= 25):
+                        return "#ffffb2"
+                    case (densityScore <= 50):
+                        return "#fed976"
+                    case (densityScore <= 100):
+                        return "#feb24c"
+                    case (densityScore <= 150):
+                        return "#fd8d3c"
+                    case (densityScore <= 200):
+                        return "#f03b20"
+                    default:
+                        return "#bd0026"
+                }
+            }
+            else {
+                return "lightgrey"
+            }
+            var densityScore = 0
+        });
+}

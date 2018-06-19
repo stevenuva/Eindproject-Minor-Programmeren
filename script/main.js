@@ -1,3 +1,4 @@
+var country = "World"
 var popDensity = []
 var agricultureLand = []
 var forestLand = []
@@ -55,9 +56,9 @@ function restructData(data){
     // })
 
     createGlobe();
-    createPieChart(agricultureLand, forestLand);
+    createPieChart();
     createGradientLegend()
-    createLineGraph("World");
+    createLineGraph();
 
 
     createTimeSlider(popDensity, foodIndex, cropIndex, livestockIndex, agricultureLand, forestLand);

@@ -1,4 +1,4 @@
-function createLineGraph(country = "World"){
+function createLineGraph(){
 
 
   // console.log(popTotal)
