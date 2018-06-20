@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap v3 requirements-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
     <!-- link to external sheets for style -->
     <link rel="shortcut icon" href="/image/favicon.png">
     <link rel="stylesheet" type="text/css" href="linegraph.css">
     <link rel="stylesheet" type="text/css" href="piechart.css">
     <link rel="stylesheet" type="text/css" href="globe.css">
     <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="stylesheet bootstrap" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- import necessary libraries -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
@@ -20,93 +28,89 @@
     <script src="piechart.js"></script>
     <script src="timeslider.js"></script>
 
-    <!--
-        source bootstrap: https://getbootstrap.com/docs/3.3/getting-started/
-        jQuery library
-    -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>
         Agriculture and Population growth: How sustainable is the current
         population growth
     </title>
 </head>
+
 <body>
-    <div class="jumbotron text-center">
+<div class="jumbotron text-center">
+    <div class="page-header">
         <h1>
-            Agriculture and Population growth
+            <strong>Agriculture and Population growth</strong>
         </h1>
-        <h2>
-            How sustainable is the current population growth?
-        </h2>
-        <p>
-            In 1799 demographer Thomas Malthus
-            <a href="https://en.wikipedia.org/wiki/Malthusian_catastrophe">
-                predicted
-            </a>
-             that in the future there will come a day when there will not be
-             enough food produced to feed everybody, and that too much land is
-             being used for agriculture. This website will illustrate whether
-             there are any indications that indicate that Malthus might be
-             right and that overpopulation is or will be a real problem.
-        </p>
-        <h5>
-            Source:
-            <a href="https://data.worldbank.org/indicator">
-                The World Bank
-            </a>
-        </h5>
-         <h5>
-            Creator: Steven Kuhnen (10305882)
-        </h5>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div id="globe">
-                <h2 id="globeTitle">Globe (YEAR)</h2>
-            </div>
-        </div>
-        <div class="row align-items-center">
-            <div id="gradientLegend">
-            </div>
-            <p>Population Density (per km<sup>2</sup>)</p>
-        </div>
-        <br>
-        <div class="row">
-            <div id="selectCountry">
-            </div>
-        </div>
-        <br>
-        <div class="row">
-        <h3>Time Slider</h3>
-          <div class="col-sm">
-            <div id="timeSlider"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <div class="col-sm-4 col-xs-offset-1">
-                <h4>Indicator</h4>
-                <div id="selectIndicator"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-6">
-                <h2 id="lineGraphTitle">Line Graph (COUNTRY)</h2>
-                <div id="lineGraph">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div id="pieChart">
-                    <h2 id="pieChartTitle">Pie Chart (COUNTRY) (YEAR)</h2>
-                </div>
-            </div>
+    <h2>
+        How sustainable is the current population growth?
+    </h2>
+    <p>
+        In 1799 demographer Thomas Malthus
+        <a href="https://en.wikipedia.org/wiki/Malthusian_catastrophe">
+            predicted </a>
+         that in the future there will come a day when there will not be
+         enough food produced to feed everybody, and that too much land is
+         being used for agriculture. This website will illustrate whether
+         there are any indications that indicate that Malthus might be
+         right and that overpopulation is or will be a real problem.
+    </p>
+    <h5>
+        Source:
+        <a href="https://data.worldbank.org/indicator">
+            The World Bank
+        </a>
+    </h5>
+     <h5>
+        Creator: Steven Kuhnen (10305882)
+    </h5>
+</div>
+<div class="container-fluid text-center">
+    <div class="row">
+        <div id="globe">
+            <h2 id="globeTitle">Globe (YEAR)</h2>
         </div>
     </div>
+    <div class="row align-items-center">
+        <div id="gradientLegend">
+        </div>
+        <p>Population Density (per km<sup>2</sup>)</p>
+    </div>
+    <br>
+    <div class="row">
+        <div id="selectCountry">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+    <h3>Time Slider</h3>
+      <div class="col-sm">
+        <div id="timeSlider"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="col-sm-4 col-xs-offset-1">
+            <h4>Indicator</h4>
+            <div id="selectIndicator"></div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 id="lineGraphTitle">Line Graph (COUNTRY)</h2>
+            <div id="lineGraph">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="pieChart">
+                <h2 id="pieChartTitle">Pie Chart (COUNTRY) (YEAR)</h2>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
 
 

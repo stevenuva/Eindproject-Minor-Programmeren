@@ -31,7 +31,11 @@ function createGlobe() {
     var toolTip = d3.select("#globe").append("div").attr("class", "toolTip")
 
     // add drop down menu to the globe
-    var countryDropDown = d3.select("#selectCountry").append("select").attr("name", "countries");
+    var countryDropDown = d3.select("#selectCountry").append("select").attr("class", "js-example-basic-single").attr("name", "countries");
+
+$(document).ready(function() {
+    $('.js-example-basic-single').select2({dropdownAutoWidth : true, width: "auto"});
+});
 
     // load map and country names
     d3.queue()
@@ -108,20 +112,22 @@ function createGlobe() {
           toolTip.text(countryId[d.id] + ": " + tiptext + " inhabitants per km^2")
           toolTip.style("left", (d3.event.pageX + 7) + "px")
           .style("top", (d3.event.pageY - 15) + "px")
-          d3.selectAll("#lineGraph svg").remove("svg");
-          d3.selectAll("#selectIndicator select").remove("select");
+          // d3.selectAll("#selectIndicator select").remove("select");
           country = countryId[d.id]
-          createLineGraph();
+          drawPath();
+              // change the title of the map
+    document.getElementById("lineGraphTitle").innerHTML = "Line Graph: " + country;
           createPieChart();
           document.getElementById("globeTitle").innerHTML = "Globe: " + country + " (" + year + ")";
         });
 
         colorUpdate()
 
-        //Country focus on option select
+        // selectttttttttt
+        // country focus on option select
 
-        d3.select("select").on("change", function() {
-          // console.log(this)
+        $(".js-example-basic-single").on("select2:select", function(){
+          console.log(this)
           // console.log(this.value)
           // console.log("Value", this[this.value])
           // console.log("TEST", this[this.selectedIndex].text)
@@ -136,9 +142,10 @@ function createGlobe() {
 
 
 
-          d3.selectAll("#lineGraph svg").remove("svg");
-          d3.selectAll("#selectIndicator select").remove("select");
-          createLineGraph()
+          // d3.selectAll("#selectIndicator select").remove("select");
+          drawPath()
+              // change the title of the map
+    document.getElementById("lineGraphTitle").innerHTML = "Line Graph: " + country;
           createPieChart()
           colorUpdate()
 

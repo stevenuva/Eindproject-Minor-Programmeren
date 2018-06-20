@@ -1,9 +1,11 @@
-html{
-  text-align: center;
+body {
+    background-color: rgba(171, 166, 191, 0.1);
+    color: #583E2E;
 }
 
-body{
-    background-color: #F0EDE5 !important;
+.jumbotron {
+    background-color: rgb(241, 224, 214);
+    color: #583E2E;
 }
 
 .toolTip {

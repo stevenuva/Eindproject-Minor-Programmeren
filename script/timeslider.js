@@ -17,7 +17,7 @@ function createTimeSlider() {
       d3.selectAll("#lineGraph svg").remove("svg");
       d3.selectAll("#selectIndicator select").remove("select");
       createPieChart()
-      createLineGraph();
+      drawPath();
       colorUpdate()
     });
 

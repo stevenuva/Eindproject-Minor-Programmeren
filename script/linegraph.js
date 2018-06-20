@@ -1,7 +1,9 @@
+var chosenValue = foodIndex
+
+var svg, toolTip, x , y, valueLine;
+
 function createLineGraph(){
 
-
-  // console.log(popTotal)
 
 var allData = [foodIndex, cropIndex, livestockIndex]
 var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
@@ -23,35 +25,26 @@ var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
 
     // console.log(popLine)
 
-
-    // change the title of the map
-    document.getElementById("lineGraphTitle").innerHTML = "Line Graph: " + country;
-
-
     // console.log(document.getElementById("lineGraphTitle").innerHTML)
 
-    countryDropDown = d3.select("#selectIndicator").append("select").attr("name", "indicator");
+    countryDropDown = d3.select("#selectIndicator").append("select").attr("class", "js-example-basic-single2").attr("name", "indicator");
+
+
+    $(document).ready(function() {
+    $('.js-example-basic-single2').select2({dropdownAutoWidth : true, width: "auto"});
+});
 
     allData.forEach(function(d, i) {
           option = countryDropDown.append("option");
           option.text(allDataText[i]);
-          // console.log(d[0]["Series"])
           option.property("value", d[0]["Series"]);
         });
 
     // console.log(foodIndex)
 
-    var chosenValue = foodIndex
+
 
     // console.log(chosenValue)
-
-    d3.select("#selectIndicator").select("select").on("change", function() {
-        console.log(this)
-        console.log("test linegraph")
-        // transation function ......
-        chosenValue = this.value
-        //.......
-    });
 
     foodLine = []
 
@@ -72,16 +65,16 @@ var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
         height = 500 - margin.top - margin.bottom;
 
     // Set the ranges
-    var x = d3.scaleLinear().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
+    x = d3.scaleLinear().range([0, width]);
+    y = d3.scaleLinear().range([height, 0]);
 
     // Define the line
-    var valueLine = d3.line()
+    valueLine = d3.line()
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.indexNumber); });
 
     // Adds the svg canvas
-    var svg = d3.select("#lineGraph")
+    svg = d3.select("#lineGraph")
         .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -95,42 +88,7 @@ var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
    return d.date; }), d3.max(foodLine, function(d) { return d.date; })]);
   y.domain([0, 200]);
 
-  var toolTip = d3.select("#lineGraph").append("div").attr("class", "toolTip")
-
-  // Add the valueline path.
-  svg.append("path")
-      .data([foodLine])
-      .attr("class", "line")
-      .attr("d", valueLine)
-      .on('mousemove', function(d) {
-        toolTip.text(Math.round(x.invert(d3.mouse(this)[0])) + ": " + (y.invert(d3.mouse(this)[1]).toFixed(2)))
-            .style("left", (d3.event.layerX + 3) + "px")
-            .style('top', (d3.event.layerY + 10) + 'px')
-            .style('display', 'block')
-            .style("opacity", 1);
-
-      })
-      .on("mouseout", function(d) {
-         toolTip.style("display", "none");
-      });
-
-
-    svg.append("path")
-      .data([popLine])
-      .attr("class", "line")
-      .style("stroke", "red")
-      .attr("d", valueLine)
-      .on('mousemove', function(d) {
-        toolTip.text(Math.round(x.invert(d3.mouse(this)[0])) + ": " + (y.invert(d3.mouse(this)[1]).toFixed(2)))
-            .style("left", (d3.event.layerX + 3) + "px")
-            .style('top', (d3.event.layerY + 10) + 'px')
-            .style('display', 'block')
-            .style("opacity", 1);
-
-      })
-      .on("mouseout", function(d) {
-         toolTip.style("display", "none");
-      });
+  toolTip = d3.select("#lineGraph").append("div").attr("class", "toolTip")
 
     var xAxis = d3.axisBottom(x)
                 .tickFormat(function(d){
@@ -145,4 +103,68 @@ var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
   // Add the Y Axis
   svg.append("g")
       .call(d3.axisLeft(y));
+
+    svg.append("path")
+    .data([popLine])
+    .attr("class", "line")
+    .style("stroke", "red")
+    .attr("d", valueLine)
+    .on('mousemove', function(d) {
+      toolTip.text(Math.round(x.invert(d3.mouse(this)[0])) + ": " + (y.invert(d3.mouse(this)[1]).toFixed(2)))
+          .style("left", (d3.event.layerX + 3) + "px")
+          .style('top', (d3.event.layerY + 10) + 'px')
+          .style('display', 'block')
+          .style("opacity", 1);
+
+    })
+    .on("mouseout", function(d) {
+       toolTip.style("display", "none");
+    });
+
+    drawPath()
+
+      $(".js-example-basic-single2").on("select2:select", function(){
+        console.log(this)
+        console.log("test linegraph")
+        // transation function ......
+        chosenValue = eval(this.value)
+
+        drawPath()
+
+        //.......
+    });
 };
+
+
+function drawPath(){
+
+d3.select("#foodLine").remove();
+
+
+foodLine = []
+
+chosenValue.forEach(function(d) {
+    if (d["Country"] === country) {
+        for (var i = 1964; i <= 2014; i++) {
+            foodLine.push({"date" : i, "indexNumber" : d[i]})
+         }
+   }
+})
+
+svg.append("path")
+    .data([foodLine])
+    .attr("class", "line")
+    .attr("id", "foodLine")
+    .attr("d", valueLine)
+    .on('mousemove', function(d) {
+      toolTip.text(Math.round(x.invert(d3.mouse(this)[0])) + ": " + (y.invert(d3.mouse(this)[1]).toFixed(2)))
+          .style("left", (d3.event.layerX + 3) + "px")
+          .style('top', (d3.event.layerY + 10) + 'px')
+          .style('display', 'block')
+          .style("opacity", 1);
+
+    })
+    .on("mouseout", function(d) {
+       toolTip.style("display", "none");
+    });
+}
