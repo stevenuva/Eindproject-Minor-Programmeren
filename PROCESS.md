@@ -71,13 +71,11 @@
 - changed color textbox
 - Gradient scale change 250 to 250+
 - navbar
+- cleaned up github
 
 
 ## to do next days/weeks:
-- fix placement with bootstrap
 - add story
-- d3 nice transitions
-- adding more functions to avoid duplicate coding
 - clean up code
 
 

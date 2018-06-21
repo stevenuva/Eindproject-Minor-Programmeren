@@ -19,7 +19,7 @@ window.onload = function() {
  */
 function loadData() {
   d3.queue()
-    .defer(d3.json, "world_bank_data.json")
+    .defer(d3.json, "./data/world_bank_data.json")
     .awaitAll(checkResponse);
 };
 
