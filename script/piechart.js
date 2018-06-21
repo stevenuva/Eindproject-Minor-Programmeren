@@ -7,7 +7,7 @@ function createPieChart() {
 
     d3.selectAll("#pieChart svg").remove("svg");
      // change the title of the map
-    document.getElementById("pieChartTitle").innerHTML = "Pie Chart: " + country + " (" + year + ")";
+    document.getElementById("pieChartTitle").innerHTML = "Donut Chart: " + country + " (" + year + ")";
 
     var w = 600,
     h = 500,
@@ -27,27 +27,36 @@ function createPieChart() {
         }
     })
 
-    var color = ["#fdae61", "#b2df8a", "#ffffb3"]
-
-    if (year > 1989) {
-        var pieLabels = ["Agricultural land", "Forest area", "Other area"]
-    }
-    else {
-        var pieLabels = ["Agricultural land", "", "Other area"]
-    }
-
-
     var remaining = 100 - pieValues[0] - pieValues[1]
     pieValues.push(remaining.toFixed(2))
 
+    var color = []
+
+    var legendLabels = []
+    var pieLabels = []
+
+    if (year > 1989) {
+        legendLabels = ["Agricultural land", "Forest area", "Other area"]
+        color = ["#fdae61", "#b2df8a", "#ffffb3"]
+        pieLabels = [pieValues[0] + "%", pieValues[1] + "%", pieValues[2] + "%"]
+    }
+    else {
+        var oValues = [pieValues[0], pieValues[2]]
+        color = ["#fdae61", "#ffffb3"]
+        pieLabels = [pieValues[0]+ "%", pieValues[2] + "%"]
+        legendLabels = ["Agricultural land", "Other area (including forest area)"]
+        pieValues = []
+        pieValues = oValues
+        console.log(pieValues)
+    }
     // generate arc
     var arc = d3.arc()
         .outerRadius(radius - 10)
-        .innerRadius(0);
+        .innerRadius(radius - 70);
 
     var arcLabel = d3.arc()
-        .outerRadius(radius - 100)
-        .innerRadius(radius - 100)
+        .outerRadius(radius - 40)
+        .innerRadius(radius - 40)
 
     var pie = d3.pie()
         .sort(null)
@@ -87,5 +96,35 @@ function createPieChart() {
     g.append("text")
       .attr("transform", function(d) { return "translate(" + arcLabel.centroid(d) + ")"; })
       .attr("dy", "0.35em")
-      .text(function(d, i) { return pieLabels[i]; })
+      .text(function(d, i) { if (pieValues[i] > 2) {  return pieLabels[i]; }})
+
+
+        var legendRectSize = 18;
+        var legendSpacing = 30;
+        var offset = 50;
+
+    var legend = svg.selectAll('.legend')
+      .data(color)
+      .enter()
+      .append('g')
+      .attr('class', 'legend')
+      .attr('transform', function(d, i) {
+        var height = legendRectSize + legendSpacing;
+        var horz = -4 * legendRectSize;
+        var vert = i * height - offset;
+        return 'translate(' + horz + ',' + vert + ')';
+      });
+
+  legend.append('rect')
+  .attr('width', legendRectSize)
+  .attr('height', legendRectSize)
+  .style('fill', function(d, i){
+            return color[i];
+        })
+
+  legend.append('text')
+  .attr('x', legendRectSize + legendSpacing)
+  .attr('y', legendRectSize - legendSpacing + offset/2)
+  .text(function(d, i) { return legendLabels[i]; })
 };
+

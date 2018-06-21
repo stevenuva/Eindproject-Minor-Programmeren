@@ -88,6 +88,7 @@ $(document).ready(function() {
               svg.selectAll(".focused").classed("focused", focused = false);
             }))
 
+
         //Mouse events
 
         .on("mouseover", function(d) {
@@ -109,7 +110,7 @@ $(document).ready(function() {
                     // console.log(densityScore)
                 }
             })
-          toolTip.text(countryId[d.id] + ": " + tiptext + " inhabitants per km^2")
+          toolTip.html(countryId[d.id] + ": " + tiptext + " inhabitants per km<sup>2</sup>")
           toolTip.style("left", (d3.event.pageX + 7) + "px")
           .style("top", (d3.event.pageY - 15) + "px")
           // d3.selectAll("#selectIndicator select").remove("select");
@@ -220,9 +221,13 @@ var x = d3.scaleLinear()
   .domain([0,250])
   .range([2,350])
 
+var xtest = d3.scalePoint()
+  .domain(["0", "50", "100", "150", "200", "250+"])
+  .range([2,350])
 
-var axis = d3.axisBottom(x)
-             .ticks(5);
+var axis = d3.axisBottom(xtest)
+             .ticks(5)
+             .tickValues(["0", "50", "100", "150", "200", "250+"]);
 
 d3.select("#gradient")
         .attr("class", "axis")

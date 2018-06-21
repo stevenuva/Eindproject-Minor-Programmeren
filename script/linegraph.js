@@ -8,21 +8,21 @@ function createLineGraph(){
 var allData = [foodIndex, cropIndex, livestockIndex]
 var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
 
-    popLine = []
 
-    popTotal.forEach(function(d, i) {
-        if (d["Country"] === country) {
-            // console.log(d)
-            // console.log(d["Country"])
-            var baseIndex = ((parseInt(d[2004]) + parseInt(d[2005])) + parseInt(d[2006]) ) / 3
-            // console.log(baseIndex)
-            for (var i = 1964; i <= 2014; i++) {
-                indexNumber = (100 / baseIndex) * (parseInt(d[i]))
-                popLine.push({"date" : i, "indexNumber" : indexNumber})
-             }
-        }
-    })
+    // popLine = []
 
+    // popTotal.forEach(function(d, i) {
+    //     if (d["Country"] === country) {
+    //         // console.log(d)
+    //         // console.log(d["Country"])
+    //         var baseIndex = ((parseInt(d[2004]) + parseInt(d[2005])) + parseInt(d[2006]) ) / 3
+    //         // console.log(baseIndex)
+    //         for (var i = 1964; i <= 2014; i++) {
+    //             indexNumber = (100 / baseIndex) * (parseInt(d[i]))
+    //             popLine.push({"date" : i, "indexNumber" : indexNumber})
+    //          }
+    //     }
+    // })
     // console.log(popLine)
 
     // console.log(document.getElementById("lineGraphTitle").innerHTML)
@@ -104,22 +104,22 @@ var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
   svg.append("g")
       .call(d3.axisLeft(y));
 
-    svg.append("path")
-    .data([popLine])
-    .attr("class", "line")
-    .style("stroke", "red")
-    .attr("d", valueLine)
-    .on('mousemove', function(d) {
-      toolTip.text(Math.round(x.invert(d3.mouse(this)[0])) + ": " + (y.invert(d3.mouse(this)[1]).toFixed(2)))
-          .style("left", (d3.event.layerX + 3) + "px")
-          .style('top', (d3.event.layerY + 10) + 'px')
-          .style('display', 'block')
-          .style("opacity", 1);
+    // svg.append("path")
+    // .data([popLine])
+    // .attr("class", "line")
+    // .style("stroke", "red")
+    // .attr("d", valueLine)
+    // .on('mousemove', function(d) {
+    //   toolTip.text(Math.round(x.invert(d3.mouse(this)[0])) + ": " + (y.invert(d3.mouse(this)[1]).toFixed(2)))
+    //       .style("left", (d3.event.layerX + 3) + "px")
+    //       .style('top', (d3.event.layerY + 10) + 'px')
+    //       .style('display', 'block')
+    //       .style("opacity", 1);
 
-    })
-    .on("mouseout", function(d) {
-       toolTip.style("display", "none");
-    });
+    // })
+    // .on("mouseout", function(d) {
+    //    toolTip.style("display", "none");
+    // });
 
 
     drawPath()
@@ -138,6 +138,41 @@ var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
 
 
 function drawPath(){
+
+d3.select("#popLine").remove();
+
+    popLine = []
+
+    popTotal.forEach(function(d, i) {
+        if (d["Country"] === country) {
+            // console.log(d)
+            // console.log(d["Country"])
+            var baseIndex = ((parseInt(d[2004]) + parseInt(d[2005])) + parseInt(d[2006]) ) / 3
+            // console.log(baseIndex)
+            for (var i = 1964; i <= 2014; i++) {
+                indexNumber = (100 / baseIndex) * (parseInt(d[i]))
+                popLine.push({"date" : i, "indexNumber" : indexNumber})
+             }
+        }
+    })
+
+ svg.append("path")
+    .data([popLine])
+    .attr("class", "line")
+    .attr("id", "popLine")
+    .style("stroke", "red")
+    .attr("d", valueLine)
+    .on('mousemove', function(d) {
+      toolTip.text(Math.round(x.invert(d3.mouse(this)[0])) + ": " + (y.invert(d3.mouse(this)[1]).toFixed(2)))
+          .style("left", (d3.event.layerX + 3) + "px")
+          .style('top', (d3.event.layerY + 10) + 'px')
+          .style('display', 'block')
+          .style("opacity", 1);
+
+    })
+    .on("mouseout", function(d) {
+       toolTip.style("display", "none");
+    });
 
 d3.select("#foodLine").remove();
 

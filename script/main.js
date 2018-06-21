@@ -59,8 +59,7 @@ function restructData(data){
     createPieChart();
     createGradientLegend()
     createLineGraph();
-
-
-    createTimeSlider(popDensity, foodIndex, cropIndex, livestockIndex, agricultureLand, forestLand);
+    createTimeSlider();
 };
+
 

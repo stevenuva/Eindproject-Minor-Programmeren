@@ -64,6 +64,14 @@
 - used select2 library to allow use to add search bar to dropdown menu
 - draw function to draw lines(no longer need to delete whole linegraph svg)
 
+# day 14
+- changed pie chart to donut chart with legend
+- edited update function linegraph to update population line/path
+- fix bug which caused other visualizations to crash when user did not use country specific data
+- changed color textbox
+- Gradient scale change 250 to 250+
+- navbar
+
 
 ## to do next days/weeks:
 - fix placement with bootstrap
@@ -71,5 +79,9 @@
 - d3 nice transitions
 - adding more functions to avoid duplicate coding
 - clean up code
-- population line lingraph update
+
+
+
+
+
 

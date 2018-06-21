@@ -13,7 +13,6 @@ function createTimeSlider() {
       d3.selectAll("#selectCountry select").remove("select");
       document.getElementById("globeTitle").innerHTML = "Globe (" + year  + ")"
       document.getElementById("pieChartTitle").innerHTML = "Pie Chart: World (" + year  + ")";
-      country = (document.getElementById("lineGraphTitle").innerHTML).replace("Line Graph: ", "")
       createPieChart()
       drawPath();
       colorUpdate()

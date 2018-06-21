@@ -1,9 +1,18 @@
 .arc path {
-    stroke: black;
-    stroke-width: 2;
+    stroke: #583E2E;
+    stroke-width: 4;
  }
 
 .arc text {
-  font: 16px;
+  font-size: 14px;
+  font-weight: bold;
   text-anchor: middle;
 }
+
+.legend rect{
+    stroke: black;
+    stroke-width: 2;
+}
+
+
+
