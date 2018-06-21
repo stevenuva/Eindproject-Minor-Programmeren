@@ -121,6 +121,7 @@ var allDataText = ["Total Food Index", "Crop Index", "Livestock Index"]
        toolTip.style("display", "none");
     });
 
+
     drawPath()
 
       $(".js-example-basic-single2").on("select2:select", function(){

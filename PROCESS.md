@@ -59,12 +59,17 @@
 - cleaned up part of the code
 - adding functions to avoid duplicate coding
 
+# day 13
+- interactivy drop down menu line graph
+- used select2 library to allow use to add search bar to dropdown menu
+- draw function to draw lines(no longer need to delete whole linegraph svg)
+
 
 ## to do next days/weeks:
 - fix placement with bootstrap
 - add story
-- interactivy drop down menu line graph
 - d3 nice transitions
 - adding more functions to avoid duplicate coding
 - clean up code
+- population line lingraph update
 
