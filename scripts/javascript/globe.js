@@ -51,8 +51,8 @@ function createGlobe() {
 
     // load map and country names
     d3.queue()
-        .defer(d3.json, "../data/world-110m.json")
-        .defer(d3.tsv, "../data/world-110m.tsv")
+        .defer(d3.json, "data/world-110m.json")
+        .defer(d3.tsv, "data/world-110m.tsv")
         .await(loadGlobe);
 
     // load and draw the countries
