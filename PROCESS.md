@@ -73,6 +73,13 @@
 - navbar
 - cleaned up github
 
+# day 15
+- presentation
+
+# day 16
+- added popovers to instruct the user how to use the website
+- more code cleaned, and comments added
+- edit tooltip linegraph
 
 ## to do next days/weeks:
 - add story
