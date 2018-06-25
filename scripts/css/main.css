@@ -3,6 +3,17 @@ body {
     color: #583E2E;
 }
 
+.popover {
+    background-color: black;
+    color: white;
+}
+
+.popover-title {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
 .jumbotron {
     background-color: rgb(241, 224, 214);
     color: #583E2E;
@@ -16,6 +27,12 @@ body {
   .navbar li a, .navbar .navbar-brand {
     color: #fff !important;
     border: black 1px;
+}
+
+#intro{
+  margin-left: 15%;
+  margin-right: 15%;
+  text-align: left;
 }
 
 
@@ -34,6 +51,11 @@ body {
   font-weight: bold;
 }
 
+#references{
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
 
 blockquote p:before {
     content: open-quote;

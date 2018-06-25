@@ -1,54 +1,54 @@
-function createPieChart() {
+function createDonutChart() {
 
-
-
-    console.log(popDensity)
-
-
-    d3.selectAll("#pieChart svg").remove("svg");
-     // change the title of the map
-    document.getElementById("pieChartTitle").innerHTML = "Donut Chart: " + country + " (" + year + ")";
-
+    // variables needed to create the donut chart
     var w = 600,
     h = 500,
-    radius = w / 2.35;
+    radius = w / 2.35,
+    donutValues = [],
+    remaining,
+    color = [],
+    donutLabels = [],
+    legendLabels = [];
 
-    var pieValues = []
+    // remove previous donut chart
+    d3.selectAll("#donutChart svg").remove("svg");
 
-    agricultureLand.forEach(function(d) {
-        if (d["Country"] === String(country)) {
-            pieValues.push(Number(d[year]).toFixed(2))
-        }
-    })
+    // change the title of the map
+    document.getElementById("donutChartTitle").innerHTML = ": " + country +
+        " (" + year + ")";
 
-    forestLand.forEach(function(d) {
-        if (d["Country"] === String(country)) {
-            pieValues.push(Number(d[year]).toFixed(2))
-        }
-    })
 
-    var remaining = 100 - pieValues[0] - pieValues[1]
-    pieValues.push(remaining.toFixed(2))
+    // loop to find the data needed to fill the donut chart
+    for (var i = 0; i < agricultureLand.length; i++) {
 
-    var color = []
+        // check if data is available
+        if (agricultureLand[i]["Country"] === String(country)) {
+            donutValues.push(Number(agricultureLand[i][year]).toFixed(2))
+            donutValues.push(Number(forestLand[i][year]).toFixed(2))
 
-    var legendLabels = []
-    var pieLabels = []
+            // calculate remaining value and push all to a array
+            remaining = 100 - donutValues[0] - donutValues[1]
+            donutValues.push(remaining.toFixed(2))
+            break;
+        };
+    };
 
+    /*
+        Check if the chosen year is 1990 or later.
+        Data for forest area is not available before 1990.
+    */
     if (year > 1989) {
-        legendLabels = ["Agricultural land", "Forest area", "Other area"]
         color = ["#fdae61", "#b2df8a", "#ffffb3"]
-        pieLabels = [pieValues[0] + "%", pieValues[1] + "%", pieValues[2] + "%"]
+        donutLabels = [donutValues[0] + "%", donutValues[1] + "%", donutValues[2] + "%"]
+        legendLabels = ["Agricultural land", "Forest area", "Other area"]
     }
     else {
-        var oValues = [pieValues[0], pieValues[2]]
         color = ["#fdae61", "#ffffb3"]
-        pieLabels = [pieValues[0]+ "%", pieValues[2] + "%"]
+        donutValues = [donutValues[0], donutValues[2]]
+        donutLabels = [donutValues[0]+ "%", donutValues[1] + "%"]
         legendLabels = ["Agricultural land", "Other area (including forest area)"]
-        pieValues = []
-        pieValues = oValues
-        console.log(pieValues)
     }
+
     // generate arc
     var arc = d3.arc()
         .outerRadius(radius - 10)
@@ -64,16 +64,16 @@ function createPieChart() {
             return d;
         });
 
-    var toolTip = d3.select("#pieChart").append("div").attr("class", "toolTip")
+    var toolTip = d3.select("#donutChart").append("div").attr("class", "toolTip")
 
-    var svg = d3.select("#pieChart").append("svg")
+    var svg = d3.select("#donutChart").append("svg")
             .attr("width", w)
             .attr("height", h)
             .append("g")
             .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
     var g = svg.selectAll(".arc")
-        .data(pie(pieValues))
+        .data(pie(donutValues))
         .enter().append("g")
         .attr("class", "arc")
         .on('mousemove', function(d) {
@@ -92,16 +92,14 @@ function createPieChart() {
             return color[i];
         })
 
-
     g.append("text")
       .attr("transform", function(d) { return "translate(" + arcLabel.centroid(d) + ")"; })
       .attr("dy", "0.35em")
-      .text(function(d, i) { if (pieValues[i] > 2) {  return pieLabels[i]; }})
+      .text(function(d, i) { if (donutValues[i] > 3) {  return donutLabels[i]; }})
 
-
-        var legendRectSize = 18;
-        var legendSpacing = 30;
-        var offset = 50;
+    var legendRectSize = 18,
+    legendSpacing = 30,
+    offset = 50;
 
     var legend = svg.selectAll('.legend')
       .data(color)
@@ -127,4 +125,3 @@ function createPieChart() {
   .attr('y', legendRectSize - legendSpacing + offset/2)
   .text(function(d, i) { return legendLabels[i]; })
 };
-

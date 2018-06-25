@@ -1,21 +1,22 @@
-var country = "World"
-var popDensity = []
-var agricultureLand = []
-var forestLand = []
-var popTotal = []
-var foodIndex = []
-var cropIndex = []
-var livestockIndex = []
-var year = 2014
+// global variables needed to run other scripts properly
+var country = "World",
+popDensity = [],
+agricultureLand = [],
+forestLand = [],
+popTotal = [],
+foodIndex = [],
+cropIndex = [],
+livestockIndex = [],
+year = 1970;
 
-// call function load data when page is loaded
+// call function to load data when page is loaded
 window.onload = function() {
   loadData();
 };
 
 /**
- *  function which loads three json files
- *  calls another function to check the queue response
+ *  Function which loads three json files.
+ *  Calls another function to check the queue response.
  */
 function loadData() {
   d3.queue()
@@ -24,42 +25,41 @@ function loadData() {
 };
 
 /**
- *  function checks if the queue response is vallid
- *  seperates the json data if response is vallid
- *  calls another function to clean the data
+ *  Function checks if the queue response is vallid.
+ *  Seperates the json data if response is vallid.
+ *  Calls another function to store the data
  */
 function checkResponse(error, response) {
     var jsonData = []
     if (error) throw error;
     else {
+
         // push the different json outputs to an array
         jsonData.push(response[0].data)
     };
-    // console.log(jsonData)
-    // clean the json data
+
+    // call funtion to clean the json data
     restructData(jsonData)
 
 }
 
+// function to store the data
 function restructData(data){
 
+    // store each data serie into an array with the same name
     data[0].forEach(function(d) {
         eval(d["Series"]).push(d)
     })
-    // console.log(popDensity)
 
-
-    // popDensity.forEach(function(d) {
-    //     if (d["Country"] === "Afghanistan") {
-    //         console.log(d["2014"])
-    //     }
-    // })
-
+    // call functions to draw the visualizations
     createGlobe();
-    createPieChart();
+    createDonutChart();
     createGradientLegend()
     createLineGraph();
     createTimeSlider();
+
+    // add popovers after the visualizations are created
+    $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
 };
-
-

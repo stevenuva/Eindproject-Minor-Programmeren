@@ -1,16 +1,172 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Project Steven Kuhnen</title>
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <body>
-    <h1>Project</h1>
-    <h2>Steven Kuhnen</h2>
-    <div>
-      <a href="https://stevenuva.github.io/project/scripts/main.html">My website</a>
+    <!-- Bootstrap v3 requirements-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <!-- link to external sheets for style -->
+    <link rel="shortcut icon" href="image/favicon.png">
+    <link rel="stylesheet" href="scripts/css/linegraph.css">
+    <link rel="stylesheet" href="scripts/css/donutchart.css">
+    <link rel="stylesheet" href="scripts/css/globe.css">
+    <link rel="stylesheet" href="scripts/css/main.css">
+    <!-- import necessary libraries -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider@0.2.1/build/d3-simple-slider.js"></script>
+    <script src="scripts/javascript/main.js"></script>
+    <script src="scripts/javascript/globe.js"></script>
+    <script src="scripts/javascript/linegraph.js"></script>
+    <script src="scripts/javascript/donutchart.js"></script>
+    <script src="scripts/javascript/timeslider.js"></script>
+
+    <title>
+        Agriculture and Population growth: How sustainable is the current
+        population growth
+    </title>
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#top">Start</a>
     </div>
-  </body>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+          <li><a href="#quote">Globe</a></li>
+          <li><a href="#rowLineGraph">Line Graph</a></li>
+          <li><a href="#donutChart">Donut Chart</a></li>
+          <li><a href="#extraStory">The Story Behind the Numbers</a></li>
+          <li><a href="#references">Links</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://github.com/stevenuva/project">Creator: Steven Kuhnen (10305882)</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+    <div class="page-header" id="top">
+        <h1>
+            <strong>Agriculture and Population growth</strong>
+        </h1>
+    </div>
+    <h2>
+        How sustainable is the current population growth?
+    </h2>
+    <p id="intro">
+        In 1798 demographer Thomas Malthus
+        <a href="https://en.wikipedia.org/wiki/Malthusian_catastrophe">
+            predicted </a>
+         that in the future there will come a day when there will not be
+         enough food produced to feed everybody, and that too much land is
+         being used for agriculture. This website will illustrate whether
+         there are any indications that indicate that Malthus might be
+         right and that overpopulation is or will be a real problem.
+    </p>
+</div>
+<blockquote id="quote"><p><strong>The power of population is so superior to the power of the earth to produce subsistence for man, that premature death must in some shape or other visit the human race.</strong></p>
+<footer>Thomas Malthus in “An Essay on the Principle of Population (1798)”</footer></blockquote>
+<div class="container-fluid text-center">
+    <div class="row">
+        <div id="globe">
+            <h2><a title="<h4> How to use the Globe? </h4>" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<div>The globe itself shows how densely populated some countries were in a specific year.<br><br> - To locate a country on the map the user could 1) drag the globe and find a country manually or 2) simply use the drop down menu right below the globe.<br><br>
+            - Hoovering over a specific country, will change the countries colour on the globe to purple. <br><br> - By <b>CLICKING</b> on a specific country, the user will be presented with more information about the country that was selected. <br><br> - Countries with no data available are colored in grey <br><br> - The Donut chart and the Line Graph will also show more data about the specific country that was <b>CLICKED</b> on. <br><br> - Finally, note that by using the Timeslider below, the data projected on to the globe will change and show how densely populated countries were in the year that was selected.</div>">Globe</a><span id="globeTitle"> (1970)</span></h2>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div id="gradientLegend">
+        </div>
+        <p>Population Density (per km<sup>2</sup>)</p>
+    </div>
+    <br>
+    <div class="row">
+        <div id="selectCountry">
+            <select class="countryDropDown">
+                    <option></option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+    <h3><a title="How to use the Time Slider?" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<div>The Time Slider allows the user to change the year of which the data is shown on the Globe and on the Donut Chart. <br><br> - The user can choose any year between 1964 and 2014 by simply dragging the slider to the right place on the time line.<br><br> - Note that for years prior to 1990 their is <b>no</b> data available for the amount of forest area (% of land area)</div>">Time Slider</a></h3>
+      <div class="col-sm">
+        <div id="timeSlider"></div>
+      </div>
+    </div>
+    <div class="row" id=rowLineGraph>
+      <div class="col-sm">
+        <div class="col-sm-4 col-xs-offset-1">
+            <h4>Indicator</h4>
+            <div id="selectIndicator">
+                <select class="indicatorDropDown">
+                    <option></option>
+                </select>
+            </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="lineGraph">
+                <h2><a title="How to use the Line Graph?" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<div>The Line Graph allows the user to compare the population growth between 1964 and 2014 with the growth of another indicator of overpopulation. <br><br>
+                - With the dropdown menu above the Line Graph, the user is able to pick which variable will be compared with the total population growth. There are three options: 1) Total food production, 2) Crop production and 3) Livestock production.<br><br>.
+                - The variable are compared by using index numbers<br><br>
+                - The average of 2004 - 2006 is taken as the index basis (100) for every variable.<br><br>
+                 - Note that for years prior to 1990 their is <b>no</b> data available for some of the countries (e.g. Balkans)</div>">Line Graph</a><span id="lineGraphTitle">: World</span></h2>
+            </div>
+            <p class="storytime">
+                Malthus' hypothesis stated that the world population would grow exponentially (1, 2, 4, 8, 32, 64…), whereas agricultural production would increase arithmetically (1, 2, 3, 4, 5, 6, 7…), making it inevitable that the planet would, at some time or other, be unable to produce enough food for all its inhabitants.
+            <p>
+        </div>
+        <div class="col-sm-6">
+            <div id="donutChart">
+                <h2><a title="How to use the Donut Chart?" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<div>- Hoovering over one of the areas will present a textbox showing the user how much of the total land area is being used by one of the variables. <br><br> - The percentages itself will not be shown on one of the areas when the size of the area is less than 3% of the total land area(too small otherwise)<br><br> - Note that for years prior to 1990 their is <b>no</b> data available for the amount of forest area (% of land area) </div>">Donut Chart</a><span id="donutChartTitle">: World (1970)</span></h2>
+            </div>
+            <p class="storytime">
+                Population growth is directly related to the increase in the demand for food. In order to meet this demand for food, we have to produce more crop. In order to produce more crop, we require more land; and to get more land for cultivation we have started encroaching upon the forestland, cutting down trees and turning vast tracts of lush green forests into large fields.
+            </p>
+        </div>
+    </div>
+    <div class="row" id="extraStory">
+        <h2>Behind the Numbers</h2>
+         <div class="col-sm-4"><h3>Overpopulation</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p></div>
+         <div class="col-sm-4"><h3>Indications</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p></div>
+         <div class="col-sm-4"><h3>Critics</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p></div>
+    </div>
+    <h2>References</h2>
+    <div class="row" id="references">
+        <ul style="list-style-type:square">
+            <li><a href="https://www.gutenberg.org/files/4239/4239-h/4239-h.htm">An Essay on the Principle of Population(1978), Thomas Malthus</a></li>
+            <br><li>
+            <a href="https://github.com/stevenuva/project">My Github Folder</a>
+            </li><br><li>
+            <a href="https://data.worldbank.org/indicator">The World Bank</a></li>
+        </ul>
+
+
+    </div>
+</div>
+</body>
+
 </html>
+
+
