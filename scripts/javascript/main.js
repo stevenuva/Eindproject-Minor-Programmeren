@@ -1,3 +1,11 @@
+/*
+    main.js
+    Final Project Minor Programmeren
+    Steven Kuhnen (10305882)
+    Loads the data calls other functions to create the visualizations.
+*/
+
+
 // global variables needed to run other scripts properly
 var country = "World",
 popDensity = [],
@@ -20,7 +28,7 @@ window.onload = function() {
  */
 function loadData() {
   d3.queue()
-    .defer(d3.json, "../data/world_bank_data.json")
+    .defer(d3.json, "https://raw.githubusercontent.com/stevenuva/project/master/data/world_bank_data.json")
     .awaitAll(checkResponse);
 };
 

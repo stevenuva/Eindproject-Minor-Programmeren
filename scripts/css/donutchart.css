@@ -1,3 +1,10 @@
+/*
+    donutcharts.css
+    Final Project Minor Programmeren
+    Steven Kuhnen (10305882)
+    Stylesheet for the donut chart
+*/
+
 .arc path {
     stroke: #583E2E;
     stroke-width: 4;
@@ -13,6 +20,3 @@
     stroke: black;
     stroke-width: 2;
 }
-
-
-

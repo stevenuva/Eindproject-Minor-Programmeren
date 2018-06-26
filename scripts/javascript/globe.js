@@ -1,3 +1,12 @@
+/*
+    globe.js
+    Final Project Minor Programmeren
+    Steven Kuhnen (10305882)
+
+    Creates a globe and calls other functions to update other visualizations when needed.
+*/
+
+
 // variables needed to make the globe work
 var w = 600,
     h = 500,

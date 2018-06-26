@@ -1,3 +1,12 @@
+/*
+    donutchart.js
+    Final Project Minor Programmeren
+    Steven Kuhnen (10305882)
+
+    Creates a donut chart.
+*/
+
+
 function createDonutChart() {
 
     // variables needed to create the donut chart

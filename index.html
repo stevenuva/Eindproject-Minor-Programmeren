@@ -1,3 +1,11 @@
+<!--
+    index.html
+    Final project minor programmeren
+    Name: Steven Kuhnen (10305882)
+    Html file needed to make the website
+ -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +93,7 @@
             that in the future there will come a day when there will not be
             enough food produced to feed everybody, and that too much land is
             being used for agriculture. This website will illustrate whether
-            there are any indications that indicate that Malthus might be
+            there were any indications between 1964 and 2014 that indicate that Malthus might be
             right and that overpopulation is or will be a real problem.
         </p>
     </div>
@@ -100,22 +108,29 @@
         </footer>
     </blockquote>
 
-
+    <!--  put rest of body in a container with centered text -->
     <div class="container-fluid text-center">
+
+        <!--  add a row for the globe -->
         <div class="row">
             <div id="globe">
+
+                <!--  add a popover to the globe -->
                 <h2>
                     <a title="<h4> How to use the Globe? </h4>" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<div>The globe itself shows how densely populated some countries were in a specific year.<br><br> - To locate a country on the map the user could 1) drag the globe and find a country manually or 2) simply use the drop down menu right below the globe.<br><br>
                     - Hoovering over a specific country, will change the countries colour on the globe to purple. <br><br> - By <b>CLICKING</b> on a specific country, the user will be presented with more information about the country that was selected. <br><br> - Countries with no data available are colored in grey <br><br> - The Donut chart and the Line Graph will also show more data about the specific country that was <b>CLICKED</b> on. <br><br> - Finally, note that by using the Timeslider below, the data projected on to the globe will change and show how densely populated countries were in the year that was selected.</div>">Globe</a><span id="globeTitle"> (1970)</span>
                 </h2>
             </div>
         </div>
+
+        <!--  add row for the gradient legend -->
         <div class="row align-items-center">
             <div id="gradientLegend"></div>
             <p>Population Density (per km<sup>2</sup>)</p>
         </div>
         <br>
 
+        <!--  add row for the dropdown menu to select a country -->
         <div class="row">
             <div id="selectCountry">
                 <select class="countryDropDown">
@@ -125,7 +140,10 @@
         </div>
         <br>
 
+        <!--  add a row for the time slider -->
         <div class="row">
+
+            <!--  add a popover to the time slider -->
             <h3>
                 <a title="How to use the Time Slider?" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<div>The Time Slider allows the user to change the year of which the data is shown on the Globe and on the Donut Chart. <br><br> - The user can choose any year between 1964 and 2014 by simply dragging the slider to the right place on the time line.<br><br> - Note that for years prior to 1990 their is <b>no</b> data available for the amount of forest area (% of land area)</div>">Time Slider</a>
             </h3>
@@ -134,7 +152,10 @@
             </div>
         </div>
 
+        <!--  add a row for the dropdown menu of the line graph -->
         <div class="row" id=rowLineGraph>
+
+            <!--  place the row in the right column -->
             <div class="col-sm">
                 <div class="col-sm-4 col-xs-offset-1">
                     <h4>Indicator</h4>
@@ -148,9 +169,14 @@
         </div>
         <br>
 
+        <!--  add a row for the line graph and the donut chart -->
         <div class="row">
+
+            <!--  column for the line graph -->
             <div class="col-sm-6">
                 <div id="lineGraph">
+
+                    <!--  add a popover to the line graph -->
                     <h2>
                         <a title="How to use the Line Graph?" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<div>The Line Graph allows the user to compare the population growth between 1964 and 2014 with the growth of another indicator of overpopulation. <br><br>
                         - With the dropdown menu above the Line Graph, the user is able to pick which variable will be compared with the total population growth. There are three options: 1) Total food production, 2) Crop production and 3) Livestock production.<br><br>.
@@ -159,37 +185,51 @@
                         - Note that for years prior to 1990 their is <b>no</b> data available for some of the countries (e.g. Balkans)</div>">Line Graph</a><span id="lineGraphTitle">: World</span>
                     </h2>
                 </div>
+
+                <!--  add text box beneath the line graph -->
                 <p class="storytime">
                     Malthus' hypothesis stated that the world population would grow exponentially (1, 2, 4, 8, 32, 64…), whereas agricultural production would increase arithmetically (1, 2, 3, 4, 5, 6, 7…), making it inevitable that the planet would, at some time or other, be unable to produce enough food for all its inhabitants.
                 <p>
-        </div>
+            </div>
 
+            <!--  add column for the donut chart -->
             <div class="col-sm-6">
                 <div id="donutChart">
+
+                    <!--  add a popover to the donut chart -->
                     <h2>
                         <a title="How to use the Donut Chart?" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<div>- Hoovering over one of the areas will present a textbox showing the user how much of the total land area is being used by one of the variables. <br><br> - The percentages itself will not be shown on one of the areas when the size of the area is less than 3% of the total land area(too small otherwise)<br><br> - Note that for years prior to 1990 their is <b>no</b> data available for the amount of forest area (% of land area) </div>">Donut Chart</a><span id="donutChartTitle">: World (1970)</span>
                     </h2>
                 </div>
+
+                <!--  add text box beneath the donut chart -->
                 <p class="storytime">
                     Population growth is directly related to the increase in the demand for food. In order to meet this demand for food, we have to produce more crop. In order to produce more crop, we require more land; and to get more land for cultivation we have started encroaching upon the forestland, cutting down trees and turning vast tracts of lush green forests into large fields.
                 </p>
             </div>
         </div>
 
+        <!--  add extra row to tell more of the story -->
         <div class="row" id="extraStory">
             <h2>Behind the Numbers</h2>
+
+            <!--  add column for paragraph 1 -->
             <div class="col-sm-4">
                 <h3>Overpopulation</h3>
                 <p>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc
                 </p>
             </div>
+
+            <!--  add column for paragraph 2 -->
             <div class="col-sm-4">
                 <h3>Indications</h3>
                 <p>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc
                 </p>
             </div>
+
+            <!--  add column for paragraph 3 -->
             <div class="col-sm-4">
                 <h3>Critics</h3>
                 <p>
@@ -198,8 +238,11 @@
             </div>
         </div>
 
+        <!--  add row for the references -->
         <h2>References</h2>
         <div class="row" id="references">
+
+            <!--  add unordered list with references -->
             <ul style="list-style-type:square">
                 <li>
                     <a href="https://www.gutenberg.org/files/4239/4239-h/4239-h.htm">An Essay on the Principle of Population(1978), Thomas Malthus</a>

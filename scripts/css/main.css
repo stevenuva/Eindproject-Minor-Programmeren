@@ -1,6 +1,38 @@
+/*
+    main.css
+    Final Project Minor Programmeren
+    Name: Steven Kuhnen (10305882)
+    Stylesheet for the whole website
+
+*/
+
+blockquote p:before {
+    content: open-quote;
+    font-weight: bold;
+}
+blockquote p:after {
+    content: close-quote;
+    font-weight: bold;
+}
+
 body {
     background-color: rgba(171, 166, 191, 0.1);
     color: #583E2E;
+}
+
+.jumbotron {
+    background-color: rgb(241, 224, 214);
+    color: #583E2E;
+}
+
+.navbar {
+    background-color: #583E2E;
+    margin-bottom:0;
+  }
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+    border: black 1px;
 }
 
 .popover {
@@ -14,28 +46,18 @@ body {
     text-align: center;
 }
 
-.jumbotron {
-    background-color: rgb(241, 224, 214);
+.storytime {
+    border-collapse: separate;
+    border-spacing: 15px;
     color: #583E2E;
+    font-size: 16px ;
+    margin-left: 15%;
+    margin-right: 12%;
+    background-color:  rgb(241, 224, 214);
+    border-color: #583E2E;
+    border-style: solid;
+    border-width: 1px 1px 1px 20px;
 }
-
-.navbar {
-    background-color: #583E2E;
-    margin-bottom:0;
-  }
-
-  .navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
-    border: black 1px;
-}
-
-#intro{
-  margin-left: 15%;
-  margin-right: 15%;
-  text-align: left;
-}
-
-
 
 .toolTip {
   position: absolute;
@@ -51,30 +73,15 @@ body {
   font-weight: bold;
 }
 
-#references{
+
+#intro{
+  margin-left: 15%;
+  margin-right: 15%;
+  text-align: left;
+}
+
+#references {
   text-align: left;
   display: flex;
   justify-content: center;
-}
-
-blockquote p:before {
-    content: open-quote;
-    font-weight: bold;
-}
-blockquote p:after {
-    content: close-quote;
-    font-weight: bold;
-}
-
-.storytime {
-    border-collapse: separate;
-    border-spacing: 15px;
-    color: #583E2E;
-    font-size: 16px ;
-    margin-left: 15%;
-    margin-right: 12%;
-    background-color:  rgb(241, 224, 214);
-    border-color: #583E2E;
-    border-style: solid;
-    border-width: 1px 1px 1px 20px;
 }

@@ -1,3 +1,12 @@
+/*
+    linegraph.js
+    Final Project Minor Programmeren
+    Steven Kuhnen (10305882)
+
+    Creates a line graph with a dropdown menu.
+*/
+
+
 // global variables needed to create the linegraph
 var chosenValue = foodIndex,
 chosenText = "Total Food Index",

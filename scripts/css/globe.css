@@ -1,5 +1,12 @@
-.water {
-  fill: #0077BE;
+/*
+    globe.css
+    Final Project Minor Programmeren
+    Steven Kuhnen (10305882)
+    Stylesheet for the Globe and its select menu
+*/
+
+.focused {
+  fill:purple;
 }
 
 .land {
@@ -7,10 +14,6 @@
 }
 
 .land:hover {
-  fill:purple;
-}
-
-.focused {
   fill:purple;
 }
 
@@ -31,4 +34,8 @@ select {
   color: #666;
   font-size: 14px;
   font-family: sans-serif;
+}
+
+.water {
+  fill: #0077BE;
 }

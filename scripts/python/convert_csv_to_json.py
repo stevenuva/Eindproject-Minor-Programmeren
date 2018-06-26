@@ -1,4 +1,6 @@
-# Project
+# convert_csv_to_json.py
+#
+# Final Project
 # Name: Steven Kuhnen (10305882)
 #
 # Converts a csv file to a json file

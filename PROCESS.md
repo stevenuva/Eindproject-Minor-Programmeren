@@ -81,9 +81,14 @@
 - more code cleaned, and comments added
 - edit tooltip linegraph
 
+# day 17
+- added comments and code is clean
+- done a code review and received feedback myself
+- problem with github pages loading my data
+
 ## to do next days/weeks:
 - add story
-- clean up code
+- make video
 
 
 
