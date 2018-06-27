@@ -20,6 +20,12 @@ body {
     color: #583E2E;
 }
 
+.extraStory {
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+
 .jumbotron {
     background-color: rgb(241, 224, 214);
     color: #583E2E;
