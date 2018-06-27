@@ -15,7 +15,10 @@ x,
 y,
 valueLine;
 
-// function which creates a line graph
+/*
+    Function which creates a line graph.
+    Inspiration: https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f
+*/
 function createLineGraph() {
 
     // variable needed to draw line for the chosen food variable

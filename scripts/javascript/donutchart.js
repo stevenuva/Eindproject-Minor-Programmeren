@@ -6,6 +6,10 @@
     Creates a donut chart.
 */
 
+/*
+    Function wich creates a donut chart.
+    Inspiration: https://www.youtube.com/watch?v=kK5kKA-0PUQ
+*/
 function createDonutChart() {
 
     // variables needed to create the donut chart

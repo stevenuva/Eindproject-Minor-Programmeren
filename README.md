@@ -53,6 +53,11 @@ Datasets from the World Bank (https://data.worldbank.org/indicator) will be used
 - D3 version 4
 - D3 tip
 - D3 topojson (https://github.com/topojson/topojson)
-- Select2 library
+- Select2 library (MIT License)
 
-### Copyright
+### References
+- Pie chart (https://www.youtube.com/watch?v=kK5kKA-0PUQ) (No License)
+- Line Graph (https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f) (No License)
+- Gradient (https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient.html) (No License)
+- Earth globe (https://bl.ocks.org/KoGor/5994804) (MIT License)
+- Slider (https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518) (BSD 3-Clause License)

@@ -17,7 +17,7 @@ var w = 600,
 
 /*
   function to create a globe
-  source: http://bl.ocks.org/KoGor/5994804
+  source: https://bl.ocks.org/KoGor/5994804
 */
 function createGlobe() {
 
@@ -88,7 +88,7 @@ function createGlobe() {
         /*
             Drag event function to allow user to rotate the globe when the mouse
             is placed on a country.
-            source: http://bl.ocks.org/KoGor/5994804
+            source: https://bl.ocks.org/KoGor/5994804
         */
         .call(d3.drag()
             .subject(function() {
@@ -195,7 +195,7 @@ function createGlobe() {
             /*
               Transition function to rotate the globe smoothly and to highlight
               chosen country.
-              source: http://bl.ocks.org/KoGor/5994804
+              source: https://bl.ocks.org/KoGor/5994804
             */
             (function transition() {
                 d3.transition()
