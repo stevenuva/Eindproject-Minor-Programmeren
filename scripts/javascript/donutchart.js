@@ -6,7 +6,6 @@
     Creates a donut chart.
 */
 
-
 function createDonutChart() {
 
     // variables needed to create the donut chart

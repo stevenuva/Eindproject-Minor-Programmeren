@@ -86,9 +86,14 @@
 - done a code review and received feedback myself
 - problem with github pages loading my data
 
+# day 18
+- finished story
+- added license
+- added new readme.md and report.md
+
 ## to do next days/weeks:
-- add story
 - make video
+
 
 
 

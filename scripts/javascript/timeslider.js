@@ -6,7 +6,6 @@
     Creates a time slider and calls other functions to update other visualizations when needed.
 */
 
-
 function createTimeSlider() {
 
     // determine the number of years and the starting year of the time slider

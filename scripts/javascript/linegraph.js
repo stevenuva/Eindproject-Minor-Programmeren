@@ -6,7 +6,6 @@
     Creates a line graph with a dropdown menu.
 */
 
-
 // global variables needed to create the linegraph
 var chosenValue = foodIndex,
 chosenText = "Total Food Index",

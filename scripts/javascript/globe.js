@@ -6,7 +6,6 @@
     Creates a globe and calls other functions to update other visualizations when needed.
 */
 
-
 // variables needed to make the globe work
 var w = 600,
     h = 500,
@@ -159,7 +158,6 @@ function createGlobe() {
             population density.
         */
         colorUpdate()
-
 
         /*
             Event when a country is selected which will rotate the globe and
