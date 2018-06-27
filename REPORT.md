@@ -35,15 +35,15 @@ This file consist of the main code. From here other functions are called to crea
 - The checkResponse function push the data (if no error was thrown) to a array. This array will be cleaned and restructured with the restructData() function.
 
 - The restructData() function pushes the 8 data sets that were available in the original json file, into its own separate array with help of javascripts eval function. For example the dataset called popDensity is stored in an array named popDensity. The restructData() function also calls the following functions:
-- createGlobe(), found in globe.js
-- createDonutChart(), found in donutChart.js
-- createGradientLegend(), found in globe.js
-- createLineGraph(), found in lineGraph.js
-- createTimeSlider(), found in timeSlider.js
+    1 createGlobe(), found in globe.js
+    2 createDonutChart(), found in donutChart.js
+    3 createGradientLegend(), found in globe.js
+    4 createLineGraph(), found in lineGraph.js
+    5 createTimeSlider(), found in timeSlider.js
 
 Besides that the restructData also calls a jquery function to initialize popovers after the visualizations have been created.
 
-### Main.css
+#### main.css
 Adds style to the index.html and has the tooltip code which is used by the globe, the donut chart, and the line graph.
 
 #### Globe (globe.js)
@@ -69,13 +69,13 @@ Contains the function createTimeSlider(), this creates a time-slider which allow
 - Every visualization has its own css file
 - Adds style for the visualizations
 
-### Challenges
+### Biggest challenge
 The biggest challenge for me was to update the visualizations. In the beginning I wanted to work with parameters, but because of that my code became a bit sloppy. Because I work with five js files that all are linked together, it became clear that it would be easier to use global variables. With the global variables it became easier to update the visualizations, and most importantly to remember what the current chosen variables were. Before I used global variables my website would stop working if the user wanted to change variables for the second time. But by using global variables the memory needed to run my website did increase but at least the bugs were gone. If I had more time I would try to find a way to use less variables, which means that I would have to rewrite multiple js files.
 
-Other changes compared with Design.md:
+### Other changes compared with Design.md:
 - I also changed my initial idea of making a pie chart to making a donut chart. I found the donut chart easier to read and more visible pleasing.
 - Finally, I found it challenging to add the instruction that needed to be written on the website which can help the user to understand how the visualizations work. I used Bootstrap to add popovers. By hoovering over the title of the visualizations the user is presented with an black textbox with the necessary instructions. By hiding the instructions behind a popover, the website kept its clean look.
 
-### Looking back at my decisions
+
 
 
