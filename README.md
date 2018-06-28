@@ -46,6 +46,7 @@ Datasets from the World Bank (https://data.worldbank.org/indicator) have been us
 - [Food production index (2004 – 2006 = 100)](https://data.worldbank.org/indicator/AG.PRD.FOOD.XD?view=chart)
 - [Crop production index (2004 – 2006 = 100)](https://data.worldbank.org/indicator/AG.PRD.CROP.XD?view=chart)
 - [Livestock production index (2004 – 2006 = 100)](https://data.worldbank.org/indicator/AG.PRD.LVSK.XD?view=chart)
+___
 
 ### Code Sources
 - Pie chart (https://www.youtube.com/watch?v=kK5kKA-0PUQ) (No License)
@@ -53,8 +54,9 @@ Datasets from the World Bank (https://data.worldbank.org/indicator) have been us
 - Gradient (https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient.html) (No License)
 - Earth globe (https://bl.ocks.org/KoGor/5994804) (MIT License)
 - Slider (https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518) (BSD 3-Clause License)
+___
 
-### External components (for now)
+### External components
 - Ajax
 - Bootstrap, Version 3
 - jQuery
@@ -62,6 +64,7 @@ Datasets from the World Bank (https://data.worldbank.org/indicator) have been us
 - D3 simple-slider, Version 0.2.1
 - D3 topojson (https://github.com/topojson/topojson)
 - Select2 library (MIT License)
+___
 
 ### References Storytelling
 - Acciona (https://www.activesustainability.com/sustainable-development/malthus-food-production-population-growth)
