@@ -1,70 +1,81 @@
-# day 1
+# PROCESS
+___
+
+# Week 1
+
+## day 1
 - Finished proposal
 
-# day 2
+## day 2
 - Started working on design document
 
-# day 3
+## day 3
 - Finished design document
 - Downloaded 9 datasets (one big csv file)
 - Converted csv to json
 - Removed utf-8 conversion problem
 - Data contains 1794 arrays
 
-# day 4
+## day 4
 - Created scripts needed (prototype assignment)
 - Found a spinning globe example (http://bl.ocks.org/Q-Zhao/47c42d002a6d521457c1937caace12ea)
 - Problem, with country names not matching country names json data
 - Updated github, including github pages
 
-# day 5
+## day 5
 - presentation
 - manually change country names world-110m.tsv
 - addded data world as a whole
 - created function createGlobe();
+___
 
-# day 6
+# Week 2
+
+## day 6
 - data needs to be seperated again per dataset (using eval function)
 - used bootstrap to place svg
 - added a pie chart (including working data, color, label)
 - added on click funtion globe
 - added svg for line graph
 
-# day 7
+## day 7
 - added time slider
 - added color legend globe
 - inner html to change title globe, pie and line graph
 
-# day 8
+## day 8
 - added simple linegraph (difficulty with date conversion (data containing only years))
 - added tooltip pie chart
 - added tooltip to linegraph
 
-# day 9
+## day 9
 - added extra line for multi line graph
 - added dropdown menu for line graph
 - vizualisations are linked (removing html)
 
-# day 10
+## day 10
 - presentation
+___
 
-# day 11
+# Week 3
+
+## day 11
 - updated globe with color variable
 - updated gradient scale
 - added global variables (makes code less messy)
 
-# day 12
+## day 12
 - created update function to update the colors on the globe
 - linked globe and line graph
 - cleaned up part of the code
 - adding functions to avoid duplicate coding
 
-# day 13
+## day 13
 - interactivy drop down menu line graph
 - used select2 library to allow use to add search bar to dropdown menu
 - draw function to draw lines(no longer need to delete whole linegraph svg)
 
-# day 14
+## day 14
 - changed pie chart to donut chart with legend
 - edited update function linegraph to update population line/path
 - fix bug which caused other visualizations to crash when user did not use country specific data
@@ -73,29 +84,33 @@
 - navbar
 - cleaned up github
 
-# day 15
+## day 15
 - presentation
+___
 
-# day 16
+# Week 3
+
+## day 16
 - added popovers to instruct the user how to use the website
 - more code cleaned, and comments added
 - edit tooltip linegraph
 
-# day 17
+## day 17
 - added comments and code is clean
 - done a code review and received feedback myself
 - problem with github pages loading my data
 
-# day 18
+## day 18
 - finished story
 - added license
 - added new readme.md and report.md
 
-## to do next days/weeks:
-- make video
-
-
-
+## day 19
+- finished readme and report
+- made a video
+- done code review with Roos and Simon
+- edited code based on tips of the code review
+- Project Finished
 
 
 
