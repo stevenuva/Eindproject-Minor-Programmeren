@@ -1,24 +1,24 @@
 /*
-    linegraph.js
-    Final Project Minor Programmeren
-    Steven Kuhnen (10305882)
-
-    Creates a line graph with a dropdown menu.
-*/
+ *    linegraph.js
+ *    Final Project Minor Programmeren
+ *    Steven Kuhnen (10305882)
+ *
+ *    Creates a line graph with a dropdown menu.
+ */
 
 // global variables needed to create the linegraph
 var chosenValue = foodIndex,
 chosenText = "Total Food Index",
 svg,
 toolTip,
+valueLine,
 x,
-y,
-valueLine;
+y;
 
 /*
-    Function which creates a line graph.
-    Inspiration: https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f
-*/
+ *   Function which creates a line graph.
+ *   Inspiration: https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f
+ */
 function createLineGraph() {
 
     // variable needed to draw line for the chosen food variable
@@ -53,7 +53,7 @@ function createLineGraph() {
             for (var i = 1964; i <= 2014; i++) {
                 foodLine.push({"date" : i, "indexNumber" : d[i]})
              }
-       }
+       };
     });
 
     // determine the size and the margins for the graph
@@ -84,7 +84,7 @@ function createLineGraph() {
         d3.max(foodLine, function(d) { return d.date; })]);
     y.domain([0, 200]);
 
-    toolTip = d3.select("#lineGraph").append("div").attr("class", "toolTip")
+    toolTip = d3.select("#lineGraph").append("div").attr("class", "toolTip");
 
     // x axis with ticks
     var xAxis = d3.axisBottom(x)
@@ -117,16 +117,16 @@ function createLineGraph() {
         .text("Index Number (2004 - 2006 = 100)");
 
     // call function to draw the value lines on the line graph
-    drawPath()
+    drawPath();
 
     /*
-        Event when user selects a option inside the drop down menu.
-        Draw new lines based on the value that was chosen by the user.
-    */
+     *    Event when user selects a option inside the drop down menu.
+     *    Draw new lines based on the value that was chosen by the user.
+     */
     $(".indicatorDropdown").on("select2:select", function() {
         chosenValue = eval(this.value)
         chosenText = this.options[this.selectedIndex].text
-        drawPath()
+        drawPath();
     });
 };
 
@@ -135,8 +135,11 @@ function drawPath() {
 
     // variables needed to draw the lines
     var w = 500,
+    foodLine = [],
     popLine = [],
-    foodLine = [];
+    textHeight = 420,
+    textPadding = 20
+    textWidth = w - 80;
 
     // remove previous lines and their labels
     d3.select("#foodLine").remove();
@@ -145,15 +148,15 @@ function drawPath() {
     d3.select("#popLineText").remove();
 
     /*
-        Need to calculate the base index for the total population for the
-        chosen country.
-        Base index is the average between 2004 and 2006.
-        Data did not provide this.
-    */
+     *   Need to calculate the base index for the total population for the
+     *   chosen country.
+     *   Base index is the average between 2004 and 2006.
+     *   Data did not provide this.
+     */
     popTotal.forEach(function(d, i) {
         if (d["Country"] === country) {
-            var baseIndex = ((parseInt(d[2004]) + parseInt(d[2005])) +
-               parseInt(d[2006]) ) / 3
+            var baseIndex = (((parseInt(d[2004]) + parseInt(d[2005])) +
+               parseInt(d[2006]) ) / 3)
 
             // convert every years total population to an index number
             for (var i = 1964; i <= 2014; i++) {
@@ -219,7 +222,7 @@ function drawPath() {
     // add label to the chosen value line
     svg.append("text")
       .attr("id", "foodLineText")
-      .attr("transform", "translate("+(w - 80)+","+ 420+")")
+      .attr("transform", "translate(" + textWidth + "," + textHeight + ")")
       .attr("dy", ".35em")
       .attr("text-anchor", "start")
       .style("fill", "steelblue")
@@ -228,7 +231,8 @@ function drawPath() {
     // add label to the total population line
     svg.append("text")
       .attr("id", "popLineText")
-      .attr("transform", "translate("+(w - 80)+","+ 400+")")
+      .attr("transform", "translate(" + textWidth + "," + (textHeight -
+             textPadding) +")")
       .attr("dy", ".35em")
       .attr("text-anchor", "start")
       .style("fill", "red")

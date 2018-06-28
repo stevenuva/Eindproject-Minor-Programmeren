@@ -1,15 +1,16 @@
 /*
-    main.css
-    Final Project Minor Programmeren
-    Name: Steven Kuhnen (10305882)
-    Stylesheet for the whole website
-
-*/
+ *  main.css
+ *  Final Project Minor Programmeren
+ *  Name: Steven Kuhnen (10305882)
+ *
+ *  Stylesheet for the whole website
+ */
 
 blockquote p:before {
     content: open-quote;
     font-weight: bold;
 }
+
 blockquote p:after {
     content: close-quote;
     font-weight: bold;
@@ -78,7 +79,6 @@ body {
   font-family: sans-serif;
   font-weight: bold;
 }
-
 
 #intro{
   margin-left: 15%;

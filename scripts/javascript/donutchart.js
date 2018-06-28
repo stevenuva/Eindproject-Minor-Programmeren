@@ -1,26 +1,30 @@
 /*
-    donutchart.js
-    Final Project Minor Programmeren
-    Steven Kuhnen (10305882)
-
-    Creates a donut chart.
-*/
+ *   donutchart.js
+ *   Final Project Minor Programmeren
+ *   Steven Kuhnen (10305882)
+ *
+ *   Creates a donut chart.
+ */
 
 /*
-    Function wich creates a donut chart.
-    Inspiration: https://www.youtube.com/watch?v=kK5kKA-0PUQ
-*/
+ *  Function wich creates a donut chart.
+ *  Inspiration: https://www.youtube.com/watch?v=kK5kKA-0PUQ
+ */
 function createDonutChart() {
 
     // variables needed to create the donut chart
-    var w = 600,
-    h = 500,
-    radius = w / 2.35,
-    donutValues = [],
-    remaining,
+    var h = 500,
+    w = 600,
     color = [],
     donutLabels = [],
-    legendLabels = [];
+    donutValues = [],
+    legendLabels = [],
+    legendRectSize = 18,
+    legendSpacing = 30,
+    offset = 50,
+    radius = w / 2.35,
+    radiusPadding = 40
+    remaining = 100;
 
     // remove previous donut chart
     d3.selectAll("#donutChart svg").remove("svg");
@@ -38,20 +42,21 @@ function createDonutChart() {
             donutValues.push(Number(agricultureLand[i][year]).toFixed(2))
             donutValues.push(Number(forestLand[i][year]).toFixed(2))
 
-            // calculate remaining value and push all to a array
-            remaining = 100 - donutValues[0] - donutValues[1]
+            // calculate remaining percentage value and push all to a array
+            remaining = remaining - donutValues[0] - donutValues[1]
             donutValues.push(remaining.toFixed(2))
             break;
         };
     };
 
     /*
-        Check if the chosen year is 1990 or later.
-        Data for forest area is not available before 1990.
-    */
+     *   Check if the chosen year is 1990 or later.
+     *   Data for forest area is not available before 1990.
+     */
     if (year > 1989) {
         color = ["#fdae61", "#b2df8a", "#ffffb3"]
-        donutLabels = [donutValues[0] + "%", donutValues[1] + "%", donutValues[2] + "%"]
+        donutLabels = [donutValues[0] + "%", donutValues[1] + "%", donutValues[2]
+                       + "%"]
         legendLabels = ["Agricultural land", "Forest area", "Other area"]
     }
     else {
@@ -59,7 +64,7 @@ function createDonutChart() {
         donutValues = [donutValues[0], donutValues[2]]
         donutLabels = [donutValues[0]+ "%", donutValues[1] + "%"]
         legendLabels = ["Agricultural land", "Other area (including forest area)"]
-    }
+    };
 
     // generate arc
     var arc = d3.arc()
@@ -67,8 +72,8 @@ function createDonutChart() {
         .innerRadius(radius - 70);
 
     var arcLabel = d3.arc()
-        .outerRadius(radius - 40)
-        .innerRadius(radius - 40)
+        .outerRadius(radius - radiusPadding)
+        .innerRadius(radius - radiusPadding);
 
     var pie = d3.pie()
         .sort(null)
@@ -76,7 +81,7 @@ function createDonutChart() {
             return d;
         });
 
-    var toolTip = d3.select("#donutChart").append("div").attr("class", "toolTip")
+    var toolTip = d3.select("#donutChart").append("div").attr("class", "toolTip");
 
     var svg = d3.select("#donutChart").append("svg")
             .attr("width", w)
@@ -102,16 +107,16 @@ function createDonutChart() {
         .attr("d", arc)
         .style("fill", function(d, i){
             return color[i];
-        })
+        });
 
+    // show percentages when a piece of the donut is bigger then 3 percent
     g.append("text")
-      .attr("transform", function(d) { return "translate(" + arcLabel.centroid(d) + ")"; })
+      .attr("transform", function(d) { return "translate(" + arcLabel.centroid(d)
+             + ")"; })
       .attr("dy", "0.35em")
-      .text(function(d, i) { if (donutValues[i] > 3) {  return donutLabels[i]; }})
-
-    var legendRectSize = 18,
-    legendSpacing = 30,
-    offset = 50;
+      .text(function(d, i) { if (donutValues[i] > 3) {
+                return donutLabels[i]; }
+            });
 
     var legend = svg.selectAll('.legend')
       .data(color)
@@ -130,10 +135,10 @@ function createDonutChart() {
   .attr('height', legendRectSize)
   .style('fill', function(d, i){
             return color[i];
-        })
+        });
 
   legend.append('text')
   .attr('x', legendRectSize + legendSpacing)
   .attr('y', legendRectSize - legendSpacing + offset/2)
-  .text(function(d, i) { return legendLabels[i]; })
+  .text(function(d, i) { return legendLabels[i]; });
 };

@@ -1,12 +1,18 @@
 /*
-    timeslider.js
-    Final Project Minor Programmeren
-    Steven Kuhnen (10305882)
+ *   timeslider.js
+ *   Final Project Minor Programmeren
+ *   Steven Kuhnen (10305882)
+ *
+ *   Creates a time slider and calls other functions to update other
+ *   visualizations when needed.
+ */
 
-    Creates a time slider and calls other functions to update other visualizations when needed.
-*/
-
+// creates a timeslider and calls other functions to update other visualizations
 function createTimeSlider() {
+
+    var h = 100,
+    padding = 100,
+    w = 1500;
 
     // determine the number of years and the starting year of the time slider
     var years = d3.range(0, 51).map(function (d) {
@@ -14,15 +20,15 @@ function createTimeSlider() {
                 });
 
     /*
-        Determine size and ticks on the time slider.
-        On change event update other visualizations with data from the chosen
-        year.
-        Source: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
-    */
+     *   Determine size and ticks on the time slider.
+     *   On change event update other visualizations with data from the chosen
+     *   year.
+     *   Source: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
+     */
     var timeSlider = d3.sliderHorizontal()
         .min(d3.min(years))
         .max(d3.max(years))
-        .width(1400)
+        .width(w - padding)
         .tickFormat(d3.timeFormat('%Y'))
         .tickValues(years)
         .on('onchange', val => {
@@ -35,9 +41,9 @@ function createTimeSlider() {
             colorUpdate();
 
             /*
-                Change year in the donut chart title and update data needed to
-                refill the donut chart.
-            */
+             *   Change year in the donut chart title and update data needed to
+             *   refill the donut chart.
+             */
             document.getElementById("donutChartTitle").innerHTML = ": " +
                 country + "(" + year  + ")";
             createDonutChart();
@@ -45,8 +51,8 @@ function createTimeSlider() {
 
     // create svg for the time slider
     var svg = d3.select("#timeSlider").append("svg")
-        .attr("width", 1500)
-        .attr("height", 100)
+        .attr("width", w)
+        .attr("height", h)
         .append("g")
         .attr("transform", "translate(30,30)");
 

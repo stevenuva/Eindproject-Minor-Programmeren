@@ -1,20 +1,19 @@
 /*
-    main.js
-    Final Project Minor Programmeren
-    Steven Kuhnen (10305882)
-    Loads the data calls other functions to create the visualizations.
-*/
-
+ *   main.js
+ *   Final Project Minor Programmeren
+ *   Steven Kuhnen (10305882)
+ *   Loads the data and calls other functions to create the visualizations.
+ */
 
 // global variables needed to run other scripts properly
 var country = "World",
-popDensity = [],
 agricultureLand = [],
-forestLand = [],
-popTotal = [],
-foodIndex = [],
 cropIndex = [],
+foodIndex = [],
+forestLand = [],
 livestockIndex = [],
+popDensity = [],
+popTotal = [],
 year = 1970;
 
 // call function to load data when page is loaded
@@ -47,27 +46,26 @@ function checkResponse(error, response) {
     };
 
     // call funtion to clean the json data
-    restructData(jsonData)
-
-}
+    restructData(jsonData);
+};
 
 // function to store the data
-function restructData(data){
+function restructData(data) {
 
     // store each data serie into an array with the same name
     data[0].forEach(function(d) {
         eval(d["Series"]).push(d)
-    })
+    });
 
     // call functions to draw the visualizations
     createGlobe();
     createDonutChart();
-    createGradientLegend()
+    createGradientLegend();
     createLineGraph();
     createTimeSlider();
 
     // add popovers after the visualizations are created
     $(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-});
+        $('[data-toggle="popover"]').popover();
+    });
 };

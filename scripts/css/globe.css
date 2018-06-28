@@ -1,9 +1,10 @@
 /*
-    globe.css
-    Final Project Minor Programmeren
-    Steven Kuhnen (10305882)
-    Stylesheet for the Globe and its select menu
-*/
+ *  globe.css
+ *  Final Project Minor Programmeren
+ *  Steven Kuhnen (10305882)
+ *
+ *  Stylesheet for the Globe and its select menu
+ */
 
 .focused {
   fill:purple;

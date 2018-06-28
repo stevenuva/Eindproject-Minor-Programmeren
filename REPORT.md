@@ -14,7 +14,7 @@ Besides these three visualizations, there are also two dropdown menus (one to se
 
 *Note the screenshot does not show the whole webpage, just the three main components. The website itself is too big to capture with a single screenshot.*
 
-### Technical Design: detailed
+### Technical Design
 
 The website and its visualisations are created with javacript and with help of d3 and bootstrap.
 In index.html, main.js, main.css you can find the main code to create the website and its visualization. Furthermore there are 4 extra js files, firstly because every main visualization (globe, donut chart, line graph) has its own javascript and css file, while there is also a timeslider.js. These helpers files contain functions that get called in the main files. Except for the index.html, every piece of code can be found in the folder "scripts".
@@ -69,12 +69,21 @@ Contains the function createTimeSlider(), this creates a time-slider which allow
 - Every visualization has its own css file
 - Adds style for the visualizations
 
-### Biggest challenge
+### Challenges
 The biggest challenge for me was to update the visualizations. In the beginning I wanted to work with parameters, but because of that my code became a bit sloppy. Because I work with five js files that all are linked together, it became clear that it would be easier to use global variables. With the global variables it became easier to update the visualizations, and most importantly to remember what the current chosen variables were. Before I used global variables my website would stop working if the user wanted to change variables for the second time. But by using global variables the memory needed to run my website did increase but at least the bugs were gone. If I had more time I would try to find a way to use less variables, which means that I would have to rewrite multiple js files.
+
+- converting pop to index
+-
 
 ### Other changes compared with Design.md:
 - I also changed my initial idea of making a pie chart to making a donut chart. I found the donut chart easier to read and more visible pleasing.
 - Finally, I found it challenging to add the instruction that needed to be written on the website which can help the user to understand how the visualizations work. I used Bootstrap to add popovers. By hoovering over the title of the visualizations the user is presented with an black textbox with the necessary instructions. By hiding the instructions behind a popover, the website kept its clean look.
+
+
+trade-offs
+
+
+ideal world
 
 
 
