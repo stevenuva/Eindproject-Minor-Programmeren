@@ -17,8 +17,8 @@ var w = 600,
     focused;
 
 /*
- *  Function to create a globe.
- *  source: https://bl.ocks.org/KoGor/5994804
+   Function to create a globe.
+   source: https://bl.ocks.org/KoGor/5994804
  */
 function createGlobe() {
 
@@ -46,8 +46,8 @@ function createGlobe() {
     var toolTip = d3.select("#globe").append("div").attr("class", "toolTip");
 
     /*
-     *  Add drop down menu to the globe with the select2 library.
-     *  source: https://select2.org/getting-started/basic-usage
+        Add drop down menu to the globe with the select2 library.
+        source: https://select2.org/getting-started/basic-usage
      */
     var countryDropDown = d3.select("#selectCountry").select("select")
         .attr("class", "countryDropDown").attr("name", "countryFeatures");
@@ -87,9 +87,9 @@ function createGlobe() {
         .attr("d", path)
 
         /*
-         *   Drag event function to allow user to rotate the globe when the
-         *   mouse is placed on a country.
-         *   source: https://bl.ocks.org/KoGor/5994804
+            Drag event function to allow user to rotate the globe when the
+            mouse is placed on a country.
+            source: https://bl.ocks.org/KoGor/5994804
          */
         .call(d3.drag()
             .subject(function() {
@@ -118,10 +118,7 @@ function createGlobe() {
                 .style("display", "none");
         })
 
-        /*
-         *   Click event updates the other visualizations.
-         *   Click events also change the country which is highlighted.
-         */
+        // click event updates all visualizations and highlights chosen country
         .on("click", function(d, i) {
             svg.selectAll(".focused").classed("focused", focused = false);
             var tipText = "No data available for"
@@ -155,14 +152,14 @@ function createGlobe() {
         });
 
         /*
-         *   Function called to fill the countries with a color based on their
-         *   population density.
+            Function called to fill the countries with a color based on their
+            population density.
          */
         colorUpdate();
 
         /*
-         *   Event when a country is selected which will rotate the globe and
-         *   which will highlight the chosen country.
+            Event when a country is selected which will rotate the globe and
+            which will highlight the chosen country.
          */
         $(".countryDropDown").on("select2:select", function(){
             var rotate = projection.rotate()
@@ -194,9 +191,9 @@ function createGlobe() {
              " (" + year + ")";
 
             /*
-             *  Transition function to rotate the globe smoothly and to
-             *  highlight chosen country.
-             *  source: https://bl.ocks.org/KoGor/5994804
+               Transition function to rotate the globe smoothly and to
+               highlight chosen country.
+               source: https://bl.ocks.org/KoGor/5994804
              */
             (function transition() {
                 d3.transition()
@@ -219,8 +216,8 @@ function createGlobe() {
 }
 
 /*
- *   Function to color the countries on the globe based on their population
- *   density per km2.
+    Function to color the countries on the globe based on their population
+    density per km2.
  */
 function colorUpdate() {
 
@@ -276,8 +273,8 @@ var svg = d3.select("#gradientLegend")
 
 
 /*
- *   Adds a defs element needed for the gradient legend.
- *   Source: https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient.html
+    Adds a defs element needed for the gradient legend.
+    Source: https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient.html
  */
 var defs = svg.append("defs");
 

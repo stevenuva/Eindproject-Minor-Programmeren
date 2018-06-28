@@ -21,6 +21,12 @@ body {
     color: #583E2E;
 }
 
+button {
+  background-color: black;
+  border: none;
+  color:white;
+}
+
 .extraStory {
     margin-left: 5%;
     margin-right: 5%;

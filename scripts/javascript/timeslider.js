@@ -20,10 +20,10 @@ function createTimeSlider() {
                 });
 
     /*
-     *   Determine size and ticks on the time slider.
-     *   On change event update other visualizations with data from the chosen
-     *   year.
-     *   Source: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
+        Determine size and ticks on the time slider.
+        On change event update other visualizations with data from the chosen
+        year.
+        Source: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
      */
     var timeSlider = d3.sliderHorizontal()
         .min(d3.min(years))
@@ -41,8 +41,8 @@ function createTimeSlider() {
             colorUpdate();
 
             /*
-             *   Change year in the donut chart title and update data needed to
-             *   refill the donut chart.
+                Change year in the donut chart title and update data needed to
+                refill the donut chart.
              */
             document.getElementById("donutChartTitle").innerHTML = ": " +
                 country + "(" + year  + ")";

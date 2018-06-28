@@ -16,8 +16,8 @@ x,
 y;
 
 /*
- *   Function which creates a line graph.
- *   Inspiration: https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f
+    Function which creates a line graph.
+    Inspiration: https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f
  */
 function createLineGraph() {
 
@@ -120,8 +120,8 @@ function createLineGraph() {
     drawPath();
 
     /*
-     *    Event when user selects a option inside the drop down menu.
-     *    Draw new lines based on the value that was chosen by the user.
+         Event when user selects a option inside the drop down menu.
+         Draw new lines based on the value that was chosen by the user.
      */
     $(".indicatorDropdown").on("select2:select", function() {
         chosenValue = eval(this.value)
@@ -148,10 +148,10 @@ function drawPath() {
     d3.select("#popLineText").remove();
 
     /*
-     *   Need to calculate the base index for the total population for the
-     *   chosen country.
-     *   Base index is the average between 2004 and 2006.
-     *   Data did not provide this.
+        Need to calculate the base index for the total population for the
+        chosen country.
+        Base index is the average between 2004 and 2006.
+        Data did not provide this.
      */
     popTotal.forEach(function(d, i) {
         if (d["Country"] === country) {
@@ -221,20 +221,20 @@ function drawPath() {
 
     // add label to the chosen value line
     svg.append("text")
-      .attr("id", "foodLineText")
-      .attr("transform", "translate(" + textWidth + "," + textHeight + ")")
-      .attr("dy", ".35em")
-      .attr("text-anchor", "start")
-      .style("fill", "steelblue")
-      .text(chosenText);
+        .attr("id", "foodLineText")
+        .attr("transform", "translate(" + textWidth + "," + textHeight + ")")
+        .attr("dy", ".35em")
+        .attr("text-anchor", "start")
+        .style("fill", "steelblue")
+        .text(chosenText);
 
     // add label to the total population line
     svg.append("text")
-      .attr("id", "popLineText")
-      .attr("transform", "translate(" + textWidth + "," + (textHeight -
+        .attr("id", "popLineText")
+        .attr("transform", "translate(" + textWidth + "," + (textHeight -
              textPadding) +")")
-      .attr("dy", ".35em")
-      .attr("text-anchor", "start")
-      .style("fill", "red")
-      .text("Population Index");
+        .attr("dy", ".35em")
+        .attr("text-anchor", "start")
+        .style("fill", "red")
+        .text("Population Index");
 };

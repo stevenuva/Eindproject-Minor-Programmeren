@@ -16,25 +16,20 @@ popDensity = [],
 popTotal = [],
 year = 1970;
 
-// call function to load data when page is loaded
-window.onload = function() {
-  loadData();
-};
-
 /**
- *  Function which loads three json files.
- *  Calls another function to check the queue response.
+   Function which loads three json files when website is opened.
+   Calls another function to check the queue response.
  */
-function loadData() {
+window.onload = function() {
   d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/stevenuva/project/master/data/world_bank_data.json")
     .awaitAll(checkResponse);
 };
 
 /**
- *  Function checks if the queue response is vallid.
- *  Seperates the json data if response is vallid.
- *  Calls another function to store the data
+   Function checks if the queue response is vallid.
+   Seperates the json data if response is vallid.
+   Calls another function to store the data
  */
 function checkResponse(error, response) {
     var jsonData = []

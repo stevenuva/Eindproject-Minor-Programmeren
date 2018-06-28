@@ -25,7 +25,7 @@ Converts the datasets (csv format) from data.worldbank.org to a json file. Note 
 
 #### index.html
 - uses bootstrap to place all the visualizations and elements at the right places on the website
-- adds a navbar, foot-links, and popovers and text to the webpage
+- adds a navbar, foot-links, and popovers (activated by buttons) and text to the webpage
 - lot of divs are found here, these will be used to append the svg's containing the visualizations.
 
 #### main.js
@@ -42,7 +42,7 @@ This file consist of the main javascript code. From here other functions are cal
     4 createLineGraph(), found in lineGraph.js
     5 createTimeSlider(), found in timeSlider.js
 
-Besides that the restructData also calls a jquery function to initialize popovers after the visualizations have been created. Popovers can be seen on the index.html by hoovering over the title of the visualizations.
+Besides that the restructData also calls a jquery function to initialize popovers after the visualizations have been created. Popovers can be seen on the index.html by hoovering over the title of the visualizations (which is actually not a title but a button with text).
 
 #### main.css
 Adds style to the index.html and contains code for the tooltip which is used by the globe, the donut chart, and the line graph.

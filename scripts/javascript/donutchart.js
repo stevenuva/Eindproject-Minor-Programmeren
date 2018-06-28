@@ -7,8 +7,8 @@
  */
 
 /*
- *  Function wich creates a donut chart.
- *  Inspiration: https://www.youtube.com/watch?v=kK5kKA-0PUQ
+   Function wich creates a donut chart.
+   Inspiration: https://www.youtube.com/watch?v=kK5kKA-0PUQ
  */
 function createDonutChart() {
 
@@ -50,8 +50,8 @@ function createDonutChart() {
     };
 
     /*
-     *   Check if the chosen year is 1990 or later.
-     *   Data for forest area is not available before 1990.
+        Check if the chosen year is 1990 or later.
+        Data for forest area is not available before 1990.
      */
     if (year > 1989) {
         color = ["#fdae61", "#b2df8a", "#ffffb3"]

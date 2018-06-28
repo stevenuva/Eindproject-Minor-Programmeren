@@ -27,7 +27,7 @@ ___
 
 - User can also edit the variables being shown in the line graph. User can choose to replace the total food data with either crop- or livestock production data. This can be done by selecting a variable just above the line graph
 
-- By hoovering over the title ("Globe", "Time Slider", "Donut Chart", "Line Graph"), the user activates a popover which gives instruction how to use the visualization.
+- By hoovering over a button ("Globe", "Time Slider", "Donut Chart", "Line Graph"), the user activates a popover which gives instruction how to use the visualization.
 ![drawn proposal](doc/update-and-popover.jpg)
 ___
 
