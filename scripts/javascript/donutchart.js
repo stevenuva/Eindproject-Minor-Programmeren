@@ -66,15 +66,17 @@ function createDonutChart() {
         legendLabels = ["Agricultural land", "Other area (including forest area)"]
     };
 
-    // generate arc
+    // determine arc
     var arc = d3.arc()
         .outerRadius(radius - 10)
         .innerRadius(radius - 70);
 
+    // arc for the labels
     var arcLabel = d3.arc()
         .outerRadius(radius - radiusPadding)
         .innerRadius(radius - radiusPadding);
 
+    // generate donut chart
     var pie = d3.pie()
         .sort(null)
         .value(function(d){
@@ -83,12 +85,14 @@ function createDonutChart() {
 
     var toolTip = d3.select("#donutChart").append("div").attr("class", "toolTip");
 
+    // svg for the donut chart
     var svg = d3.select("#donutChart").append("svg")
             .attr("width", w)
             .attr("height", h)
             .append("g")
             .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
+    // g container for other elements
     var g = svg.selectAll(".arc")
         .data(pie(donutValues))
         .enter().append("g")
@@ -103,6 +107,7 @@ function createDonutChart() {
           toolTip.style("display", "none");
         });
 
+    // draw path and fill with a color from the color array
     g.append("path")
         .attr("d", arc)
         .style("fill", function(d, i){
@@ -118,6 +123,7 @@ function createDonutChart() {
                 return donutLabels[i]; }
             });
 
+    // svg for the legend inside the donut chart
     var legend = svg.selectAll('.legend')
       .data(color)
       .enter()
@@ -130,6 +136,7 @@ function createDonutChart() {
         return 'translate(' + horz + ',' + vert + ')';
       });
 
+  // append rects to the legend
   legend.append('rect')
   .attr('width', legendRectSize)
   .attr('height', legendRectSize)
@@ -137,6 +144,7 @@ function createDonutChart() {
             return color[i];
         });
 
+  // append text to the legend
   legend.append('text')
   .attr('x', legendRectSize + legendSpacing)
   .attr('y', legendRectSize - legendSpacing + offset/2)

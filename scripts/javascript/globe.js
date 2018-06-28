@@ -124,7 +124,7 @@ function createGlobe() {
          */
         .on("click", function(d, i) {
             svg.selectAll(".focused").classed("focused", focused = false);
-            var tipText = "No data available"
+            var tipText = "No data available for"
 
             // check if useable data is available for a country
             popDensity.forEach(function(e) {

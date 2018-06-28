@@ -31,7 +31,7 @@ Converts the datasets (csv format) from data.worldbank.org to a json file. Note 
 #### main.js
 This file consist of the main javascript code. From here other functions are called to create the visualisations that are depicted on the website. This file has some global variables which are needed to run everything smoothly. The file starts running when the user opens the website, with the window.onload function starts a chain of functions getting called.
 
-- The first function that gets called is the funtion loadData() which uses d3 queue to load a json file containing the data from the world bank. This data is retrieved from a raw github link (from my own github) because github pages strangly enough did not want to accept this json file otherwise. When it is done, the loadData function calls the function checkResponse().
+- The first function that gets called is the funtion loadData() which uses d3 queue to load a json file containing the data from the world bank. This data is retrieved from a raw github link (from my own github) because github pages strangely enough did not want to accept this json file otherwise. When it is done, the loadData function calls the function checkResponse().
 
 - The checkResponse function push the data (if no error was thrown) to a array. This array will be cleaned and restructured with the restructData() function.
 
@@ -74,19 +74,20 @@ ___
 ### Challenges
 The biggest challenge for me was to update the visualizations. In the beginning I wanted to work with parameters, but because of that my code became a bit sloppy. Because I work with five js files that all are linked together, it became clear that it would be easier to use global variables. With the global variables it became easier to update the visualizations, and most importantly to remember what the current chosen variables were. Before I used global variables my website would stop working if the user wanted to change variables for the second time. But by using global variables the memory needed to run my website did increase but at least the bugs were gone. If I had more time I would try to find a way to use less variables, which means that I would have to rewrite multiple js files.
 
-- converting pop to index
--
+Another challenge was to work with index numbers. For data concerning total food-, livestock- and crop-production there was only data available with index numbers. The average production between 2004 and 2006 was taken as the basic value (average 2004-2006 = 100), and every year was expressed in comparison with the basic value. Unfortunately, the data concerning the total population of a country in a specific year was not available with index numbers. With code that can be found in linegraph.js I have written (nested) back to back for loops to rewrite the population data to an index number, with the average of 2004-2006 as the basic value (100).
 
-### Other changes compared with Design.md:
-- I also changed my initial idea of making a pie chart to making a donut chart. I found the donut chart easier to read and more visible pleasing.
-- Finally, I found it challenging to add the instruction that needed to be written on the website which can help the user to understand how the visualizations work. I used Bootstrap to add popovers. By hoovering over the title of the visualizations the user is presented with an black textbox with the necessary instructions. By hiding the instructions behind a popover, the website kept its clean look.
+### Changes compared with Proposal and Design.md:
+In proposal.md and design.md I proposed to give the user the option to change the variable that is depicted on the world map (from population density to the prevalence of undernourishment). This was optional, and I end I choose not to add this to the final product. In my opinion it would have made the website too crowded with dropdown menus, and secondly I would have had to add a lot of hardcoded variables to implement this option.
 
+Another change is the navbar. I added this because it looks nice and it gives the user the option to move directly to a certain element on the website. The navbar does not scroll down aesthetic reasons. It may be less functional, but I personally think that the website becomes much uglier when the navbar is seen directly above the visualizations.
 
-trade-offs
-
-
-ideal world
+I also added textboxes beneath the donut chart and the linegraph, and text columns on the bottom of the page to add some storytelling to the website. And while text concerning the story can be seen on the website directly, text that gives instructions about how to use the visualizations are hidden with the help of Bootstrap popovers. When the user hoovers over the title of a visualizations, a popover will be shown with instructions how to use a certain visualization.
 
 
+### Given More Time
+
+If I had more time I would like to do more with bootstrap to add some more features to my website. Also would have changed the jumbotron header to something more visual pleasing with the help of Bootstrap Templates.
+
+Also instead of removing the donut chart svg when the data is updated, I would have liked to add a smoother update/transition function.
 
 
