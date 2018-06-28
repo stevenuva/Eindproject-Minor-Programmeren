@@ -5,7 +5,7 @@
 [Visit my Website!](https://stevenuva.github.io/project/)
 ___
 
-Video about the website(https://vimeo.com/277494021)
+Video about the website: https://vimeo.com/277494021
 ___
 
 ### Introduction
