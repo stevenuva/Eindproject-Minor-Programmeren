@@ -2,7 +2,7 @@
 ## *Steven Kuhnen*
 ## **Agriculture and Population growth: How sustainable is the current population growth**
 
-[Visit my Website!](https://stevenuva.github.io/project/)
+[Visit my Website!](https://stevenuva.github.io/Eindproject-Minor-Programmeren/)
 ___
 
 Video about the website: https://vimeo.com/277494021
