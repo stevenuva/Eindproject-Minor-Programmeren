@@ -1,5 +1,5 @@
 # Project Report
-## *Steven Kuhnen (10305882)*
+## *Steven Kuhnen*
 
 ### Short Description
 
@@ -69,25 +69,3 @@ Contains the function createTimeSlider(), this creates a time-slider which allow
 #### CSS (globe.js, lineGraph.js, donutChart.css)
 - Every visualization has its own css file
 - Adds style for the visualizations
-___
-
-### Challenges
-The biggest challenge for me was to update the visualizations. In the beginning I wanted to work with parameters, but because of that my code became a bit sloppy. Because I work with five js files that all are linked together, it became clear that it would be easier to use global variables. With the global variables it became easier to update the visualizations, and most importantly to remember what the current chosen variables were. Before I used global variables my website would stop working if the user wanted to change variables for the second time. But by using global variables the memory needed to run my website did increase but at least the bugs were gone. If I had more time I would try to find a way to use less variables, which means that I would have to rewrite multiple js files.
-
-Another challenge was to work with index numbers. For data concerning total food-, livestock- and crop-production there was only data available with index numbers. The average production between 2004 and 2006 was taken as the basic value (average 2004-2006 = 100), and every year was expressed in comparison with the basic value. Unfortunately, the data concerning the total population of a country in a specific year was not available with index numbers. With code that can be found in linegraph.js I have written (nested) back to back for loops to rewrite the population data to an index number, with the average of 2004-2006 as the basic value (100).
-
-### Changes compared with Proposal and Design.md:
-In proposal.md and design.md I proposed to give the user the option to change the variable that is depicted on the world map (from population density to the prevalence of undernourishment). This was optional, and I end I choose not to add this to the final product. In my opinion it would have made the website too crowded with dropdown menus, and secondly I would have had to add a lot of hardcoded variables to implement this option.
-
-Another change is the navbar. I added this because it looks nice and it gives the user the option to move directly to a certain element on the website. The navbar does not scroll down aesthetic reasons. It may be less functional, but I personally think that the website becomes much uglier when the navbar is seen directly above the visualizations.
-
-I also added textboxes beneath the donut chart and the linegraph, and text columns on the bottom of the page to add some storytelling to the website. And while text concerning the story can be seen on the website directly, text that gives instructions about how to use the visualizations are hidden with the help of Bootstrap popovers. When the user hoovers over the title of a visualizations, a popover will be shown with instructions how to use a certain visualization.
-
-
-### Given More Time
-
-If I had more time I would like to do more with bootstrap to add some more features to my website. Also would have changed the jumbotron header to something more visual pleasing with the help of Bootstrap Templates.
-
-Also instead of removing the donut chart svg when the data is updated, I would have liked to add a smoother update/transition function.
-
-

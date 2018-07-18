@@ -1,5 +1,5 @@
 # Project
-## *Steven Kuhnen (10305882)*
+## *Steven Kuhnen*
 ## **Agriculture and Population growth: How sustainable is the current population growth**
 
 [Visit my Website!](https://stevenuva.github.io/project/)
